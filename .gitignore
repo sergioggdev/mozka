@@ -3,3 +3,4 @@
 
 # Archivos ignorados
 *.lock
+package-lock.json

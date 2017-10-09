@@ -1,15 +1,48 @@
-/** @jsx h */
-import { h, Component } from 'preact';
+import React, { Component } from 'react';
+import { HashRouter as Router, Route, Redirect } from 'react-router-dom'
 
+import { MainLayout } from '../layout';
+import { Start, Welcome, Dashboard } from '../pages';
 
-export default class Router extends Component {
-	render(props, state) {
+import './router.css';
+
+export default class RouterClass extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			welcome: false,
+			newProyect: false
+		};
+		
+	}
+
+	componentWillMount() {
+		console.log(this.state);
+	}
+
+	componentDidMount() {		
+		console.log(this.state);
+		console.log(window.location.href);
+	}
+
+	componentDidUpdate() {
+		console.log(window.location.href);
+	}
+
+	render() {
 		return (
-			<div>
-				<h1>
-					Welcome to electron
-				</h1>
-			</div>
+			<Router>
+				<MainLayout>
+					{ this.state.welcome ? <Welcome /> : <App newProyect={this.state.newProyect} /> }
+				</MainLayout>
+			</Router>
 		);
 	}
 }
+
+const App = (props) => (
+	<main>
+		<Route exact path="/" render={() => props.newProyect ? <Redirect to="/start" /> : <Dashboard /> } />
+		<Route exact path="/start" component={Start} />
+	</main>
+);
