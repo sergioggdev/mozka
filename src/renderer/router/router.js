@@ -6,6 +6,7 @@ import { Start, Welcome, Dashboard } from '../pages';
 
 import './router.css';
 
+//region
 export default class RouterClass extends Component {
 	constructor(props) {
 		super(props);
@@ -46,3 +47,5 @@ const App = (props) => (
 		<Route exact path="/start" component={Start} />
 	</main>
 );
+
+//endregion

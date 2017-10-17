@@ -34,7 +34,7 @@ function createMainWindow () {
     minHeight: 400,
     title: 'Mozka',
     icon: path.join(__dirname, 'img', 'Mozka-logo.png'),
-    frame: false
+    frame: true
   });
  
   let url = isDevelopment? 'http://localhost:9080': `file://${__dirname}/index.html`;
