@@ -2,9 +2,11 @@
 
 .slide {
     display: grid;
+    overflow: hidden;
     grid-template: 1fr 4fr 1fr / 1fr 8fr 1fr;
     
     .slide__background {
+        transition: 1s;
         grid-area: 1 / 1 / span 3 / span 3;
         background-position: center;
         background-attachment: fixed;
@@ -38,4 +40,28 @@
             margin: 0;
         }
     }
+    .animationNextIn {
+        animation: translateIn 0.5s;
+    }
+    .animationNextOut {
+        animation: translateOut 0.5s;
+    }
+    .animationBackIn {
+        animation: translateOut 0.5s reverse;
+    }
+    .animationBackOut {
+        animation: translateIn 0.5s reverse;
+    }
+
+   
+}
+
+@keyframes translateIn {
+    0% {right: 0%;}
+    100% {right: 100%;}
+}
+
+@keyframes translateOut {
+    0% {left: 100%;}
+    100% {left: 0%;}
 }
