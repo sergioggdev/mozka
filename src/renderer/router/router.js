@@ -10,15 +10,12 @@ import './router.css';
 export default class RouterClass extends Component {
 	constructor(props) {
 		super(props);
+		this.handleWelcome = this.handleWelcome.bind(this);
 		this.state = {
 			welcome: true,
 			newProyect: false
 		};
 		
-	}
-
-	componentWillMount() {
-		console.log(this.state);
 	}
 
 	componentDidMount() {		
@@ -30,11 +27,15 @@ export default class RouterClass extends Component {
 		console.log(window.location.href);
 	}
 
+	handleWelcome() {
+		this.setState({welcome: false});
+	}
+
 	render() {
 		return (
 			<Router>
 				<MainLayout>
-					{ this.state.welcome ? <Welcome /> : <App newProyect={this.state.newProyect} /> }
+					{ this.state.welcome ? <Welcome handle={this.handleWelcome}/> : <App newProyect={this.state.newProyect} /> }
 				</MainLayout>
 			</Router>
 		);

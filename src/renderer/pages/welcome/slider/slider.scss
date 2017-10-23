@@ -21,6 +21,7 @@
     }
     
     .slide__area-text {
+        transition: 3s;
         position: relative;
         grid-area: 2 / 2;
         display: flex;
