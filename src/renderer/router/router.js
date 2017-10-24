@@ -11,8 +11,8 @@ export default class RouterClass extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			welcome: true,
-			newProyect: false
+			welcome: false,
+			newProyect: true
 		};
 		
 	}

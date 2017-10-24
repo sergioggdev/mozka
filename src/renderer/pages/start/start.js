@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '../components/button/button';
 import './start.scss';
 
 export default class Start extends Component {
@@ -7,7 +8,7 @@ export default class Start extends Component {
 		return (
 			<section className="start">
                 <div className="start__title">Titulo y logo</div>
-                <div className="start__load">boton para cargar</div>
+                <Button />
                 <div className="start__new">boton para nuevo proyecto</div>
                 <div className="start__help">boton de ayuda</div>
 			</section>
