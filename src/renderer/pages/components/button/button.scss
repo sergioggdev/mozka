@@ -1,0 +1,84 @@
+@import '../../../commons';
+
+input {
+    background-color: $welcome-background;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 50px;
+    border: 2px solid rgba(0,160,80,0);
+    border-radius: 4px;
+    text-transform: uppercase;
+    // box-shadow: 0px 0px 100% red;
+    transition:0.5s;
+
+}
+.svg-wrapper {
+    text-align: center;
+    height: 60px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    width: 320px;
+  }
+  
+  .shape {
+    fill: transparent;
+    stroke-dasharray: 20, 280, 20, 0, 20, 20, 20, 0, 20, 280, 20, 0, 20, 20, 20 ;
+    // stroke-dashoffset:20%;
+    stroke-width: 8px;
+    stroke: #19f6e8;
+  }
+
+  .top {
+    stroke-dasharray:10%, 120%, 10%;
+    stroke: white;
+    stroke-width: 4px;
+  }
+
+  .left {
+    stroke-dasharray: 20, 20, 20;
+    stroke: white;
+    stroke-width: 4px;
+  }
+
+  .bottom {
+    stroke-dasharray:10%, 120%, 10%;
+    stroke: white;
+    stroke-width: 4px;
+  }
+
+  .right {
+    stroke-dasharray: 8%, 10%, 8%;
+    stroke: white;
+    stroke-width: 4px;
+  }
+  
+  .text {
+    color: #fff;
+    font-family: 'Roboto Condensed';
+    font-size: 22px;
+    letter-spacing: 8px;
+    line-height: 32px;
+    position: relative;
+    top: -48px;
+  }
+  
+  @keyframes draw {
+    0% {
+      stroke-dasharray: 140 540;
+      stroke-dashoffset: -474;
+      stroke-width: 8px;
+    }
+    100% {
+      stroke-dasharray: 760;
+      stroke-dashoffset: 0;
+      stroke-width: 2px;
+    }
+  }
+  
+  .svg-wrapper:hover .shape {
+    -webkit-animation: 0.5s draw linear forwards;
+    animation: 0.5s draw linear forwards;
+  }
