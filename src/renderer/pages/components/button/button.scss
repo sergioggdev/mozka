@@ -32,18 +32,27 @@ input {
   }
 
   .top {
-    stroke-dasharray:5% 110%;
+    stroke-dasharray:10%, 120%, 10%;
     stroke: white;
+    stroke-width: 4px;
   }
 
   .left {
-    stroke-dasharray: 10 30;
+    stroke-dasharray: 20, 20, 20;
     stroke: white;
+    stroke-width: 4px;
   }
 
   .bottom {
-    stroke-dasharray:10 280;
+    stroke-dasharray:10%, 120%, 10%;
     stroke: white;
+    stroke-width: 4px;
+  }
+
+  .right {
+    stroke-dasharray: 8%, 10%, 8%;
+    stroke: white;
+    stroke-width: 4px;
   }
   
   .text {
