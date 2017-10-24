@@ -12,7 +12,7 @@ export default class RouterClass extends Component {
 		super(props);
 		this.handleWelcome = this.handleWelcome.bind(this);
 		this.state = {
-			welcome: true,
+			welcome: false,
 			newProyect: false
 		};
 		
@@ -43,10 +43,16 @@ export default class RouterClass extends Component {
 }
 
 const App = (props) => (
-	<main>
+	<div style={styles.app}>
 		<Route exact path="/" render={() => props.newProyect ? <Redirect to="/start" /> : <Dashboard /> } />
 		<Route exact path="/start" component={Start} />
-	</main>
+	</div>
 );
+
+const styles = {
+	app: {
+		height: '100%',
+	}
+};
 
 //endregion
