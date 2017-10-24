@@ -13,11 +13,7 @@ export default class RouterClass extends Component {
 		this.handleWelcome = this.handleWelcome.bind(this);
 		this.state = {
 			welcome: false,
-<<<<<<< HEAD
-			newProyect: false
-=======
 			newProyect: true
->>>>>>> work-javarea
 		};
 		
 	}
