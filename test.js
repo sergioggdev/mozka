@@ -40,3 +40,35 @@ myPerceptron.activate([1,0]); // 0.9829673642853368
 myPerceptron.activate([0,1]); // 0.9831714267395621
 myPerceptron.activate([1,1]); // 0.02128894618097928
 
+
+
+function esperar(time, callBack) {
+	var time = Date.now() + time;
+	while(Date.now() < time) {}
+	if(callBack) {callBack();}
+}
+
+//////////////////////////////////////////////////
+setTimeout( ()=> {
+	console.log('B');
+}, 2000);
+
+esperar(3000, () => {
+	console.log('C');
+});
+
+setTimeout( ()=> {
+	console.log('A');
+}, 1000);
+////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////
+window.addEventListener('click', function() {
+	console.log('hago click');
+})
+
+setTimeout( ()=> {
+	esperar(3000);
+}, 1);
+
+/////////////////////////////////////////////////////

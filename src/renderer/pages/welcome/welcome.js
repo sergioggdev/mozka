@@ -108,6 +108,6 @@ export default class Welcome extends Component {
 	}
 }
 
-Welcome.PropTypes = {
+Welcome.propTypes = {
 	handle: PropTypes.func
 };

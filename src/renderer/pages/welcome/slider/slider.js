@@ -71,10 +71,10 @@ export default class Slider extends Component {
 	}
 }
 
-Slider.PropTypes = {
+Slider.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     background: PropTypes.object.isRequired,
-    icon: PropTypes.symbol.isRequired,
+    icon: PropTypes.string.isRequired,
     animation: PropTypes.bool
 };
