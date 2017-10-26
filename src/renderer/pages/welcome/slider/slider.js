@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './slider.scss';
 
 export default class Slider extends Component {
@@ -69,3 +70,11 @@ export default class Slider extends Component {
 		);
 	}
 }
+
+Slider.PropTypes = {
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    background: PropTypes.object.isRequired,
+    icon: PropTypes.symbol.isRequired,
+    animation: PropTypes.bool
+};
