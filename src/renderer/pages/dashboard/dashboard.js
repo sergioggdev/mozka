@@ -12,8 +12,22 @@ export default class Dashboard extends Component {
 		* Un boton de ñadir manualmente un servicio
 		*/
 		return (
-			<div>
-                dashboard
+			<div className="dashboard">
+            	<div className="dashboard__bar">
+					{/*barra de control*/}
+					<div className="dashboard__bar__logo">
+						Logo
+					</div>
+					<div className="dashboard__bar__box">
+						<button>Capture</button>
+						<button>Run</button>
+						<button>Stop</button>
+					</div>
+				</div>
+            	<div className="dashboard__table">
+					{/*La tabla con los servicios*/}
+					{/* <Table /> */}
+				</div>
 			</div>
 		);
 	}

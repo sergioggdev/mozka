@@ -3,7 +3,7 @@ import Slider from './slider/slider';
 import './welcome.scss';
 
 import Background from './slider/fondo.jpg';
-import Background1 from './slider/fondo1.jpg';
+import Background1 from './slider/fondo3.jpg';
 import Icon from './slider/icon.png';
 
 const slides = [
@@ -36,11 +36,20 @@ export default class Welcome extends Component {
 		this.wait = false;
 		this.nextSlide = this.nextSlide.bind(this);
 		this.backSlide = this.backSlide.bind(this);
+		this.handleKeyPress = this.handleKeyPress.bind(this);
 		this.state = {
 			activeSlide: 0,
 			animation: null,
 		};
 		
+	}
+
+	componentWillMount() { 
+		window.addEventListener('keydown',this.handleKeyPress);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('keydown',this.handleKeyPress);
 	}
 
 	nextSlide() {
@@ -50,8 +59,8 @@ export default class Welcome extends Component {
 				this.setState({activeSlide: this.state.activeSlide + 1, animation: true});
 				setTimeout( () => { this.wait = false; }, 1100);	
 			}
-			if (slides.length-1 === this.state.activeSlide) {
-				alert('Felicidades, terminaste el tutorial');
+			else if (slides.length-1 === this.state.activeSlide) {
+				this.props.handle();
 			}
 		}
 	}
@@ -63,6 +72,14 @@ export default class Welcome extends Component {
 				this.setState({activeSlide: this.state.activeSlide - 1, animation: false});
 				setTimeout( () => { this.wait = false; }, 1100);	
 			}
+		}
+	}
+
+	handleKeyPress(event) {
+		switch(event.key) {
+			case 'ArrowRight': this.nextSlide(); break;
+			case 'ArrowLeft': this.backSlide(); break;
+			default: break;
 		}
 	}
 

@@ -55,10 +55,6 @@ export default class Slider extends Component {
         }
     }
 
-    componentWillUpdate() {
-        //console.log('se actualiza');
-    }
-
 	render() {
 		return (			
             <div className="slide">
