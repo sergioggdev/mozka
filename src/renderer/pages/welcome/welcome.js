@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Slider from './slider/slider';
 import './welcome.scss';
 
@@ -107,3 +108,6 @@ export default class Welcome extends Component {
 	}
 }
 
+Welcome.propTypes = {
+	handle: PropTypes.func
+};

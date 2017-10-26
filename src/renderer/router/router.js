@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { HashRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import { MainLayout } from '../layout';
@@ -53,6 +54,10 @@ const styles = {
 	app: {
 		height: '100%',
 	}
+};
+
+App.propTypes = {
+	newProyect: PropTypes.bool.isRequired
 };
 
 //endregion
