@@ -94,6 +94,7 @@ export default class Welcome extends Component {
 					background={slides[this.state.activeSlide].background} 
 					icon={slides[this.state.activeSlide].icon}
 					animation={this.state.animation}
+					className="welcome__slider-area"
 				/>
 				<div className="welcome__navigator">
 					<div onClick={this.backSlide}>Atras</div>

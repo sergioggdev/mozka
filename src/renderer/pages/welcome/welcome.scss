@@ -5,7 +5,7 @@
     display: grid;
     grid-template-rows: 16fr 1fr 1fr;
 
-    .slide {
+    .welcome__slider-area {
         grid-area: 1 / 1 / span 3 / span 1;
     }
 
@@ -20,8 +20,8 @@
         align-items: center;
 
         div {
-            font-size: 1.7em;
-            color: #ffffff;
+            font-size: $welcome-navigator-font-size;
+            color: $welcome-text-color;
             cursor: pointer;
         }
 

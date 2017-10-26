@@ -58,7 +58,7 @@ export default class Slider extends Component {
 
 	render() {
 		return (			
-            <div className="slide">
+            <div className={`slide ${this.props.className}`}>
                 <div className="slide__background" style={this.state.background} />
                 <div className="slide__background-gradient" />
                 <div className={`slide__area-text ${this.state.animationClass}`}>
