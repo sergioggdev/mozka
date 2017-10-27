@@ -1,13 +1,41 @@
 
 $frame-background: #414141;
+
+
+
+////////////////////////////////////////////////////////////
+/////////////////// Templates //////////////////////////////
+/* Layout Component */
+
+/* Header Component */
+
+/* Footer Component */
 $footer-background: #414141;
 
-$welcome-background: #81AEF1;
+////////////////////////////////////////////////////////////
+////////////////////// PAGES ///////////////////////////////
+/* Welcome Page */
+$welcome-text-color: #ffffff;
+$welcome-navigator-font-size: 1.7em;
+
+/* Slider Page */
+$slider-background-opacity: 0.5;
+$slider-background-gradient: linear-gradient(to bottom, #4425B0 0%,#00E875 100%);
+$slider-title-font-size: 3em;
+$slider-text-font-size: 1em;
+
+
+////////////////////////////////////////////////////////////
+///////////////// GENERAL COMPONETS ////////////////////////
 $main-background: #414141;
 
 $button-border-color: rgb(182, 41, 41);
 $button-background-color: rgb(72, 174, 224);
 $button-text-color: white;
+
+
+
+
 
 
 body {

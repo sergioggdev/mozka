@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Footer, Header } from '../components';
 
 import './mainlayout.scss';
@@ -16,3 +17,7 @@ export default class MainLayout extends Component {
 		);
 	}
 }
+
+MainLayout.propTypes = {
+	children: PropTypes.node.isRequired
+};

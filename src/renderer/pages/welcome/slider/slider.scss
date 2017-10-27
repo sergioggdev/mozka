@@ -16,8 +16,8 @@
 
     .slide__background-gradient {
         grid-area: 1 / 1 / span 3 / span 3;
-        opacity: 0.5;
-        background: linear-gradient(to bottom, #4425B0 0%,#00E875 100%);
+        opacity: $slider-background-opacity;
+        background: $slider-background-gradient;
     }
     
     .slide__area-text {
@@ -28,33 +28,39 @@
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
+        
         img {
             width: 100px;
         }
+        
         h3 {
-            color: #ffffff;
-            font-size: 3em;
+            color: $welcome-text-color;
+            font-size: $slider-title-font-size;
             margin: 10px 0;
         }
+        
         p {
-            color: #ffffff;
+            color: $welcome-text-color;
+            font-size: $slider-text-font-size;
             margin: 0;
         }
     }
+    
     .animationNextIn {
         animation: translateIn 0.5s;
     }
+    
     .animationNextOut {
         animation: translateOut 0.5s;
     }
+    
     .animationBackIn {
         animation: translateOut 0.5s reverse;
     }
+    
     .animationBackOut {
         animation: translateIn 0.5s reverse;
     }
-
-   
 }
 
 @keyframes translateIn {
