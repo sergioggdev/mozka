@@ -8,7 +8,7 @@ export default class Start extends Component {
 		return (
 			<section className="start">
                 <div className="start__title">Titulo y logo</div>
-                <Button size="small">Nuevo proyecto</Button>
+                <Button size="small" color="red">Nuevo proyecto</Button>
                 <div className="start__new">boton para nuevo proyecto</div>
                 <div className="start__help">boton de ayuda</div>
 			</section>
