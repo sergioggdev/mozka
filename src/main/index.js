@@ -28,7 +28,7 @@ app.on('ready', () => {
 function createMainWindow () {
   // Constructor de la ventana princpal
   let win = new BrowserWindow({
-    width: 600,
+    width: 700,
     height: 600,
     minWidth: 500,
     minHeight: 400,

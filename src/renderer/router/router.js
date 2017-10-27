@@ -13,8 +13,8 @@ export default class RouterClass extends Component {
 		super(props);
 		this.handleWelcome = this.handleWelcome.bind(this);
 		this.state = {
-			welcome: true,
-			newProyect: true
+			welcome: false,
+			newProyect: false
 		};
 		
 	}
