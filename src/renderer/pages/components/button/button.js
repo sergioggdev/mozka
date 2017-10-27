@@ -11,9 +11,9 @@ export default class Button extends Component {
         }
     }
 
-    render () {
+    render() {
         return (
-            <div className ="button-box">
+            <div className ={`button-box ${this.props.className}`}>
                 <button onClick={this.goTo.bind(this)} className ={`${this.props.size} ${this.props.color}`}>
                     <span>{this.props.children}</span>
                 </button>
@@ -24,7 +24,8 @@ export default class Button extends Component {
 
 Button.propTypes = {
     goTo: PropTypes.func,
-    children: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
     size: PropTypes.string.isRequired,
-    color: PropTypes.string
+    color: PropTypes.string,
+    className: PropTypes.string
 }
