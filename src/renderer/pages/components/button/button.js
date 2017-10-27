@@ -1,22 +1,31 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './button.scss';
 
 export default class Button extends Component {
-    constructor(props) {
-        super(props);
-        this.goTo = this.goTo.bind(this);
 
+    goTo() {
+        console.log("hola");
+        if (this.props.goTo) {
+            this.props.goTo();
+        }
     }
-    goTo(){
-        
-    }
-    render () {
+
+    render() {
         return (
-            <div className="button1">
-                <button onClick={this.goTo} className="prueba">
+            <div className ={`button-box ${this.props.className}`}>
+                <button onClick={this.goTo.bind(this)} className ={`${this.props.size} ${this.props.color}`}>
                     <span>{this.props.children}</span>
                 </button>
             </div>
         )
     }
 } 
+
+Button.propTypes = {
+    goTo: PropTypes.func,
+    children: PropTypes.node.isRequired,
+    size: PropTypes.string.isRequired,
+    color: PropTypes.string,
+    className: PropTypes.string
+}

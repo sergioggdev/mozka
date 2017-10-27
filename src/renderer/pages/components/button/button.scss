@@ -1,82 +1,144 @@
 @import '../../../commons';
 
-.prueba {
-  display: block;
-  position: relative;
-  padding: 1em 3em;
-  border: none;
-  border-radius:5px; 
-  background-color: rgb(66, 23, 25);
-  color: white;
-}
 
-//Aplicar a todas las cajas
-button.prueba:before,
-button.prueba:after,
-button.prueba span:before, 
-button.prueba span:after {
-    content:'';
-    position:absolute;
-    // Tiempo de la transición
-    transition:.25s all ease-out;
-    border-radius: 5px;
-}
+.button-box {
+    .small {
+        padding: 0.5em 0.75em;
+        font-size: 1em;
+    }
 
-// Superior
-button.prueba:before {
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 0%;
-    border-top:solid 3px white;
-}
-button.prueba:hover:before {
-   width: 100%;
-   height: 100%;
-   border-top:solid 3px white;
-}
-// Izquierda
-button.prueba:after {
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 0%;
-    border-left: solid 3px white;
-}
-button.prueba:hover:after {
-   width: 100%;
-   height: 100%;
-   border-left: solid 3px white;
-}
+    .medium {
+        padding: 0.5em 1em;
+        font-size: 1.5em;
+    }
+    
+    .large {
+        padding: 0.75em 1em;
+        font-size: 2em;
+    }
 
-//Inferior
-button.prueba span:before {
-    z-index: 3;
-    bottom: 0;
-    right: 0;
-    width: 0%;
-    height: 0%;
-    border-bottom: solid 3px white;
-}
-button.prueba:hover span:before {
-   width: 100%;
-   height: 100%;
-   border-bottom: solid 3px white;
-}
-// Derecha
-button.prueba span:after {
-    z-index: 3;
-    bottom: 0;
-    right: 0;
-    width: 0%;
-    height: 0%;
-    border-right: solid 3px white;
-}
-button.prueba:hover span:after {
-   width: 100%;
-   height: 100%;
-   border-right: solid 3px white;
-}
+    
+    button {
+        display: block;
+        position: relative;
+        padding: 1em 3em;
+        border: none;
+        border-radius: 5px;
+        background-color: $button-background-color;
+        color: $button-text-color;
 
+        &:focus {
+            outline: 0px;
+        }
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            transition: .25s all ease-out;
+            border-radius: 5px;
+        }
+
+        &:before {
+            z-index: 3;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 0%;
+            border-top: solid 3px $button-border-color;
+        }
+
+        &:after {
+            z-index: 3;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 0%;
+            border-left: solid 3px $button-border-color;
+        }
+
+        &:hover {
+            &:before {
+                width: 100%;
+                height: 100%;
+            }
+
+            &:after {
+                width: 100%;
+                height: 100%;
+            }
+
+            span {
+                &:before {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                &:after {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+
+        span {
+            &:before,
+            &:after {
+                content: '';
+                position: absolute; // Tiempo de la transición
+                transition: .25s all ease-out;
+                border-radius: 5px;
+            }
+
+            &:before {
+                z-index: 3;
+                bottom: 0;
+                right: 0;
+                width: 0%;
+                height: 0%;
+                border-bottom: solid 3px $button-border-color;
+            }
+
+            &:after {
+                z-index: 3;
+                bottom: 0;
+                right: 0;
+                width: 0%;
+                height: 0%;
+                border-right: solid 3px $button-border-color;
+            }
+        }
+    }
+
+    .blue {
+        background-color: blue;
+        color: black;
+        &:before, &:after {
+            border-color: black;
+        }
+        span:before, span:after {
+            border-color: black;
+        }
+    }
+    .red {
+        background-color: red;
+        color: black;
+        &:before, &:after {
+            border-color: black;
+        }
+        span:before, span:after {
+            border-color: black;
+        }
+    }
+    .green {
+        background-color: greenyellow;
+        color: black;
+        &:before, &:after {
+            border-color: black;
+        }
+        span:before, span:after {
+            border-color: black;
+        }
+    }
+}
