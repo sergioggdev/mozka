@@ -42,6 +42,10 @@ myPerceptron.activate([1,1]); // 0.02128894618097928
 
 
 
+
+
+
+
 function esperar(time, callBack) {
 	var time = Date.now() + time;
 	while(Date.now() < time) {}
@@ -61,6 +65,11 @@ setTimeout( ()=> {
 	console.log('A');
 }, 1000);
 ////////////////////////////////////////////////////////
+
+
+
+
+
 
 //////////////////////////////////////////////////////
 window.addEventListener('click', function() {
