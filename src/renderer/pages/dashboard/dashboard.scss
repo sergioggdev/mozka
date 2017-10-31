@@ -3,37 +3,7 @@
     display: grid;
     grid-template-rows: 1fr 8fr;
 
-    .dashboard__bar {
-        background-color: #5a4cda;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+    
 
-        .dashboard__bar__logo {
-            min-width: 200px;
-            width: 30%;
-            max-width: 300px;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .dashboard__bar__box {
-            min-width: 200px;
-            width: 30%;
-            max-width: 300px;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            align-items: center;
-        }
-    }
-
-    .dashboard__table {
-        background-color: #2e2e2e;
-    }
+    
 }

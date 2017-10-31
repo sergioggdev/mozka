@@ -17,6 +17,7 @@
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
         "react-router-dom": "^4.2.2",
+        "react-table": "^6.6.0",
         "source-map-support": "^0.4.17",
         "synaptic": "^1.1.4"
     },

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import TopBar from './topbar/topbar';
+import Table from './table/table';
+import EditService from './editservice/editservice';
 import './dashboard.scss';
 
 export default class Dashboard extends Component {
@@ -14,22 +17,18 @@ export default class Dashboard extends Component {
 		*/
 		return (
 			<div className="dashboard">
-            	<div className="dashboard__bar">
-					{/*barra de control*/}
-					<div className="dashboard__bar__logo">
-						Logo
-					</div>
-					<div className="dashboard__bar__box">
-						<button>Capture</button>
-						<button>Run</button>
-						<button>Stop</button>
-					</div>
-				</div>
-            	<div className="dashboard__table">
-					{/*La tabla con los servicios*/}
-					{/* <Table /> */}
-				</div>
+				<TopBar />
+            	<Table />
+				<EditService />
 			</div>
 		);
 	}
 }
+
+Dashboard.propTypes = {
+
+};
+
+Dashboard.defaultProps = {
+
+};
