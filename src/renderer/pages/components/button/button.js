@@ -8,13 +8,20 @@ export default class Button extends Component {
     render() {
         return (
             <div className ={`button-box ${this.props.className}`}>
-                <button onClick={this.props.onClick} className ={`${this.props.size} ${this.props.color}`}>
+                <button style={styles.buttonSize}  onClick={this.props.onClick} className ={`${this.props.size} ${this.props.color}`}>
                     <span>{this.props.children}</span>
                 </button>
             </div>
         )
     }
-} 
+}
+
+const styles = {
+	buttonSize: {
+		height: '50px',
+		width: '200px'
+    }
+}
 
 Button.propTypes = {
     goTo: PropTypes.func,

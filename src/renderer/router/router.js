@@ -15,7 +15,7 @@ export default class RouterClass extends Component {
 		this.handleStart = this.handleStart.bind(this);
 		this.state = {
 			welcome: false,
-			newProyect: true
+			newProyect: false
 		};
 		
 	}
@@ -41,7 +41,7 @@ export default class RouterClass extends Component {
 		return (
 			<Router>
 				<MainLayout>
-					{ this.state.welcome ? <Welcome handle={this.handleWelcome}/> : <App newProyect={this.handleStart} /> }
+					{ this.state.welcome ? <Welcome handle={this.handleWelcome}/> : <App newProyect={this.state.newProyect} /> }
 				</MainLayout>
 			</Router>
 		);

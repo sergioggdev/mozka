@@ -5,11 +5,6 @@ import './start.scss';
 
 export default class Start extends Component {
 
-	// handleStart () {
-	// 	console.log("asdfdsafds");
-	// 	this.setState({newProyect: false});
-	// }
-
 	goTo() {
         console.log("Start");
 
@@ -24,7 +19,9 @@ export default class Start extends Component {
                 <Link to="/" className="start__new">
 					<Button onClick={this.goTo.bind(this)} size="small" color="blue">Nuevo proyecto</Button>
 				</Link>
-                <Button className="start__help"size="small" color="blue">Cargar</Button>
+				<Link to="/" className="start__help" >
+                	<Button size="small" color="blue">Cargar</Button>
+				</Link>
 			</section>
 		);
 	}
