@@ -7,7 +7,9 @@ export default class Modal extends Component {
     render() {
         return(
             <div className="modal">
-
+                <div className="modal__area">
+                    <div className="">asd</div>
+                </div>
             </div>
         );
     }
