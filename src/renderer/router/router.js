@@ -12,9 +12,10 @@ export default class RouterClass extends Component {
 	constructor(props) {
 		super(props);
 		this.handleWelcome = this.handleWelcome.bind(this);
+		this.handleStart = this.handleStart.bind(this);
 		this.state = {
 			welcome: false,
-			newProyect: false
+			newProyect: true
 		};
 		
 	}
@@ -32,11 +33,15 @@ export default class RouterClass extends Component {
 		this.setState({welcome: false});
 	}
 
+	handleStart() {
+		this.setState({newProyect: false});
+	}
+
 	render() {
 		return (
 			<Router>
 				<MainLayout>
-					{ this.state.welcome ? <Welcome handle={this.handleWelcome}/> : <App newProyect={this.state.newProyect} /> }
+					{ this.state.welcome ? <Welcome handle={this.handleWelcome}/> : <App newProyect={this.handleStart} /> }
 				</MainLayout>
 			</Router>
 		);
