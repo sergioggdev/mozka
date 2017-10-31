@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '../../components';
+import { Button, Modal } from '../../components';
 import './topbar.scss';
 
 export default class TopBar extends Component {
@@ -15,6 +15,7 @@ export default class TopBar extends Component {
                     <Button size="small" className="">Run</Button>
                     <Button size="small" className="">Stop</Button>
                 </div>
+                <Modal />
             </div>
         );
     }
