@@ -4,7 +4,9 @@ import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 const isDevelopment = process.env.NODE_ENV !== 'production';
-
+console.log('url Desarrollo', `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
+console.log('url Produccion', `file://${path.join(__dirname, '..', 'renderer', 'index.html')}`);
+//
 let mainWindow; // Referencia global a la ventana principal, necesario para evitar el recolector de basura.
 
 app.on('window-all-closed', () => {
@@ -42,12 +44,21 @@ function createMainWindow () {
     frame: true
   });
  
-  let url = isDevelopment? 'http://localhost:9080': `file://${__dirname}/index.html`;
-  win.loadURL(url);
-  if (isDevelopment) { win.webContents.openDevTools(); }
+  let url = isDevelopment? `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`: `file://${path.join(__dirname, '..', 'renderer', 'index.html')}`;
 
+  if (isDevelopment) { /*win.webContents.openDevTools();*/ }
+
+  win.loadURL(url);
+  
   win.on('closed', () => {
     mainWindow = null;
+  });
+
+  win.webContents.on('devtools-opened', () => {
+    win.focus();
+    setImmediate(() => {
+      win.focus();
+    });
   });
 
   return win;
