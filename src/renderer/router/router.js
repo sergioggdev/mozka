@@ -15,7 +15,7 @@ export default class RouterClass extends Component {
 		this.handleStart = this.handleStart.bind(this);
 		this.state = {
 			welcome: false,
-			newProyect: false
+			newProyect: true
 		};
 		
 	}

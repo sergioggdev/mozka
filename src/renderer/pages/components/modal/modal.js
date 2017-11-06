@@ -4,9 +4,9 @@ import { Button } from '../button/button';
 import './modal.scss';
 
 export default class Modal extends Component {
-
     render() {
-        return(
+        let show = this.props.show || false;
+        const modal = (
             <div className="modal">
                 <div className="modal__area">
                     <div className="modal__area__title">{this.props.title}</div>
@@ -16,8 +16,14 @@ export default class Modal extends Component {
                 </div>
             </div>
         );
+        return(
+            <div>
+                { show ? modal : null }
+            </div>
+        );
     }
-} 
+}
+
 
 Modal.propTypes = {
     title: PropTypes.string.isRequired,
