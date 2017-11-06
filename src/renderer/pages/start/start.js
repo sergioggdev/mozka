@@ -6,6 +6,7 @@ import './start.scss';
 export default class Start extends Component {
 
 	goTo() {
+		debugger;
         console.log("Start");
 
 		this.props.newProyect();

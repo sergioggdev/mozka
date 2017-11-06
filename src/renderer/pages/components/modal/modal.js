@@ -8,13 +8,10 @@ export default class Modal extends Component {
     render() {
         return(
             <div className="modal">
-
                 <div className="modal__area">
-                    <div className="modal__area__title">{infoModal.title}</div>
+                    <div className="modal__area__title">{this.props.title}</div>
                     <div className="modal__area__text">
-                        <input type="modal__area__text__text" value={infoModal.info}></input>
-                        {/* <input type="modal__area__text__text"></input> */}
-                        {/* <input type="modal__area__text__button"></input> */}
+                        {this.props.children}
                     </div>
                 </div>
             </div>
@@ -22,12 +19,7 @@ export default class Modal extends Component {
     }
 } 
 
-const infoModal = {
-    title: "Información",
-    info: ""
-    
-}
-
 Modal.propTypes = {
-    
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired
 };

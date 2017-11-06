@@ -15,7 +15,9 @@ export default class TopBar extends Component {
                     <Button size="small" className="">Run</Button>
                     <Button size="small" className="">Stop</Button>
                 </div>
-                <Modal />
+                {/* <Modal title="Título modal">
+                    <div>sdfsdfsd</div>
+                </Modal> */}
             </div>
         );
     }
