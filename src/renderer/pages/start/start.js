@@ -9,14 +9,14 @@ export default class Start extends Component {
 	constructor(props) {
 		super(props);
 		this.newProyect = this.newProyect.bind(this);
+		this.closeModal = this.closeModal.bind(this);
 		this.state = {
-			show: false,
+			show: false
 		};
 		
 	}
 
 	load() {
-		debugger;
 		Electron.remote.dialog.showOpenDialog({
 			filters:[
 				{name:'Mocka proyects', extensions: ['json']},
@@ -29,6 +29,11 @@ export default class Start extends Component {
 	newProyect() {
 		console.log(this.state)
 			this.setState({ show: true });
+	}
+
+	closeModal() {
+		console.log("cerramos modal");
+		this.setState({ show: false });
 	}
 
 	componentWillMount() {
@@ -56,16 +61,16 @@ export default class Start extends Component {
 		return (
 			<section className="start">
                 <div className="start__new">
-					<Button onClick={this.newProyect} size="large" color="blue">Nuevo proyecto {this.state.show}</Button>
+					<Button onClick={this.newProyect} size="large" color="blue">Nuevo proyecto</Button>
 				</div>
 				<div className="start__help" >
                 	<Button onClick={this.load.bind(this)} size="large" color="blue">Cargar</Button>
 				</div>
 
-				<Modal title="Nuevo proyecto" show={false}>
+				<Modal title="Nuevo proyecto" show={this.state.show}>
 					<div>
-            			<p>Nombre: </p><input type="text" />
-						<Button onClick={this.newProyect} size="small" color="blue" className="start__modalAcceptButton">Aceptar</Button>
+            			<p>Nombre del proyecto: </p><input type="text" />
+						<Button onClick={this.closeModal} size="small" color="blue" className="start__modalAcceptButton">Aceptar</Button>
 					</div>
         		</Modal>
 			</section>

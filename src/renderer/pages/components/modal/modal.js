@@ -5,11 +5,6 @@ import './modal.scss';
 
 export default class Modal extends Component {
 
-    constructor(props){
-        super(props);
-        this.state
-    }
-
     componentWillMount() {
 		console.log('se va a montar la modal')
 	}
@@ -18,7 +13,7 @@ export default class Modal extends Component {
 	}
 
 	componentWillUpdate(nextProps, nextState) {
-		console.log('se actualiza la modal')
+		console.log('se actualiza la modal',this.props.show)
 	}
 
 	componentWillUnmount() {
@@ -30,6 +25,7 @@ export default class Modal extends Component {
 	}
 
     render() {
+        let show = this.props.show;
         const modal = (
             <div className="modal">
                 <div className="modal__area">
