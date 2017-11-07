@@ -18,7 +18,7 @@ export default class Button extends Component {
 
 Button.propTypes = {
     goTo: PropTypes.func,
-    children: PropTypes.node.isRequired,
+    children: PropTypes.any.isRequired,
     size: PropTypes.string.isRequired,
     color: PropTypes.string,
     className: PropTypes.string

@@ -4,8 +4,32 @@ import { Button } from '../button/button';
 import './modal.scss';
 
 export default class Modal extends Component {
+
+    constructor(props){
+        super(props);
+        this.state
+    }
+
+    componentWillMount() {
+		console.log('se va a montar la modal')
+	}
+	componentDidMount() {
+		console.log('la modal ya se monto')
+	}
+
+	componentWillUpdate(nextProps, nextState) {
+		console.log('se actualiza la modal')
+	}
+
+	componentWillUnmount() {
+		console.log('la modal se va adesmontar')
+	}
+
+	componentDidCatch(error, info) {
+		console.log('salio un error en la modal', error)
+	}
+
     render() {
-        let show = this.props.show || false;
         const modal = (
             <div className="modal">
                 <div className="modal__area">
