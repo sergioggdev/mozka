@@ -10,8 +10,10 @@ export default class Start extends Component {
 		super(props);
 		this.newProyect = this.newProyect.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 		this.state = {
-			show: false
+			show: false,
+			proyectName: ""
 		};
 		
 	}
@@ -31,9 +33,14 @@ export default class Start extends Component {
 			this.setState({ show: true });
 	}
 
+	handleChange(event) {
+		this.setState({ proyectName:event.target.value });
+	}
+
 	closeModal() {
 		console.log("cerramos modal");
 		this.setState({ show: false });
+		console.log("nombre proyecto",this.state.proyectName);
 	}
 
 	componentWillMount() {
@@ -69,7 +76,7 @@ export default class Start extends Component {
 
 				<Modal title="Nuevo proyecto" show={this.state.show}>
 					<div>
-            			<p>Nombre del proyecto: </p><input type="text" />
+            			<p>Nombre del proyecto: </p><input type="text" value={this.state.proyectName} onChange={this.handleChange}/>
 						<Button onClick={this.closeModal} size="small" color="blue" className="start__modalAcceptButton">Aceptar</Button>
 					</div>
         		</Modal>
