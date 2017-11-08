@@ -1,0 +1,30 @@
+.top-bar {
+    background-color: #5a4cda;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    .top-bar__logo {
+        min-width: 200px;
+        width: 30%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .top-bar__box {
+        min-width: 200px;
+        width: 30%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

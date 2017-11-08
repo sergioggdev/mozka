@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '../components';
 import './start.scss';
 
 export default class Start extends Component {
@@ -7,7 +9,9 @@ export default class Start extends Component {
 		return (
 			<section className="start">
                 <div className="start__title">Titulo y logo</div>
-                <div className="start__load">boton para cargar</div>
+                <Link to="/">
+					<Button size="small" color="red">Nuevo proyecto</Button>
+				</Link>
                 <div className="start__new">boton para nuevo proyecto</div>
                 <div className="start__help">boton de ayuda</div>
 			</section>

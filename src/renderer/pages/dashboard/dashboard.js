@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import TopBar from './topbar/topbar';
+import Table from './table/table';
 import './dashboard.scss';
 
 export default class Dashboard extends Component {
@@ -12,9 +15,18 @@ export default class Dashboard extends Component {
 		* Un boton de ñadir manualmente un servicio
 		*/
 		return (
-			<div>
-                dashboard
+			<div className="dashboard">
+				<TopBar />
+            	<Table />
 			</div>
 		);
 	}
 }
+
+Dashboard.propTypes = {
+
+};
+
+Dashboard.defaultProps = {
+
+};

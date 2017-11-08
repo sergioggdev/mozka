@@ -1,0 +1,74 @@
+@import '../../../commons';
+
+.slide {
+    display: grid;
+    overflow: hidden;
+    grid-template: 1fr 4fr 1fr / 1fr 8fr 1fr;
+    
+    .slide__background {
+        transition: 1s;
+        grid-area: 1 / 1 / span 3 / span 3;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .slide__background-gradient {
+        grid-area: 1 / 1 / span 3 / span 3;
+        opacity: $slider-background-opacity;
+        background: $slider-background-gradient;
+    }
+    
+    .slide__area-text {
+        transition: 3s;
+        position: relative;
+        grid-area: 2 / 2;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        
+        img {
+            width: 100px;
+        }
+        
+        h3 {
+            color: $welcome-text-color;
+            font-size: $slider-title-font-size;
+            margin: 10px 0;
+        }
+        
+        p {
+            color: $welcome-text-color;
+            font-size: $slider-text-font-size;
+            margin: 0;
+        }
+    }
+    
+    .animationNextIn {
+        animation: translateIn 0.5s;
+    }
+    
+    .animationNextOut {
+        animation: translateOut 0.5s;
+    }
+    
+    .animationBackIn {
+        animation: translateOut 0.5s reverse;
+    }
+    
+    .animationBackOut {
+        animation: translateIn 0.5s reverse;
+    }
+}
+
+@keyframes translateIn {
+    0% {right: 0%;}
+    100% {right: 100%;}
+}
+
+@keyframes translateOut {
+    0% {left: 100%;}
+    100% {left: 0%;}
+}

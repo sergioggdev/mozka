@@ -445,3 +445,8 @@
   [hidden] {
     display: none;
   }
+
+  div {
+    display: block;
+    position: static;
+  }
