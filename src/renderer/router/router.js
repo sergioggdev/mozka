@@ -12,9 +12,10 @@ export default class RouterClass extends Component {
 	constructor(props) {
 		super(props);
 		this.handleWelcome = this.handleWelcome.bind(this);
+		this.handleStart = this.handleStart.bind(this);
 		this.state = {
 			welcome: true,
-			newProyect: false
+			newProyect: true
 		};
 		
 	}
@@ -28,22 +29,20 @@ export default class RouterClass extends Component {
 		console.log(window.location.href);
 	}
 
-<<<<<<< HEAD
-=======
+
 	handleWelcome() {
 		this.setState({welcome: false});
 	}
 
->>>>>>> work-sgarciaga
+	handleStart() {
+		this.setState({newProyect: false});
+	}
+
 	render() {
 		return (
 			<Router>
 				<MainLayout>
-<<<<<<< HEAD
-					{ this.state.welcome ? <Welcome /> : <App newProyect={this.state.newProyect} /> }
-=======
 					{ this.state.welcome ? <Welcome handle={this.handleWelcome}/> : <App newProyect={this.state.newProyect} /> }
->>>>>>> work-sgarciaga
 				</MainLayout>
 			</Router>
 		);
@@ -51,13 +50,6 @@ export default class RouterClass extends Component {
 }
 
 const App = (props) => (
-<<<<<<< HEAD
-	<main>
-		<Route exact path="/" render={() => props.newProyect ? <Redirect to="/start" /> : <Dashboard /> } />
-		<Route exact path="/start" component={Start} />
-	</main>
-);
-=======
 	<div style={styles.app}>
 		<Route exact path="/" render={() => props.newProyect ? <Redirect to="/start" /> : <Dashboard /> } />
 		<Route exact path="/start" component={Start} />
@@ -75,4 +67,3 @@ App.propTypes = {
 };
 
 //endregion
->>>>>>> work-sgarciaga

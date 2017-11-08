@@ -2,27 +2,36 @@
 
 
 .button-box {
+
     .small {
+        height: 40px;
+        width: 85px;
         padding: 0.5em 0.75em;
         font-size: 1em;
     }
 
     .medium {
-        padding: 0.5em 1em;
-        font-size: 1.5em;
+        padding: 1em 1em;
+        font-size: 1em;
+        width: 200px;
+        height: 50px;
     }
     
     .large {
-        padding: 0.75em 1em;
-        font-size: 2em;
+        padding: 1em 1em;
+        font-size: 1em;
+        width: 200px;
+        height: 50px;
     }
 
     
     button {
+        margin: 0 auto;
         display: block;
         position: relative;
+        padding: 1em 3em;
         border: none;
-        border-radius: 5px;
+        // border-radius: 5px;
         background-color: $button-background-color;
         color: $button-text-color;
 
@@ -35,7 +44,7 @@
             content: '';
             position: absolute;
             transition: .25s all ease-out;
-            border-radius: 5px;
+            // border-radius: 5px;
         }
 
         &:before {
@@ -87,7 +96,7 @@
                 content: '';
                 position: absolute; // Tiempo de la transición
                 transition: .25s all ease-out;
-                border-radius: 5px;
+                // border-radius: 5px;
             }
 
             &:before {
@@ -111,13 +120,13 @@
     }
 
     .blue {
-        background-color: blue;
-        color: black;
+        background-color: #58aad9;
+        color: white;
         &:before, &:after {
-            border-color: black;
+            border-color: #2d3e4d;
         }
         span:before, span:after {
-            border-color: black;
+            border-color: #2d3e4d;
         }
     }
     .red {
