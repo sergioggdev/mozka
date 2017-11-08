@@ -13,13 +13,14 @@ if (module.hot) {
 	});
 }
 
-let myNotification = new Notification('Importante!!', {
-	body: 'Acabas de iniciar Mozca, la mejor aplicacion de Mocks'
-})
 
 
-ipcRenderer.send('asynchronous-message', 'ping');
 
-ipcRenderer.on('asynchronous-reply', (event, arg) => {
-	console.log(arg) // prints "pong"
+ipcRenderer.send('serverMsg', 'texto de ejemplos');
+
+ipcRenderer.on('serverMsg', (event, msg) => {
+	let myNotif = new Notification('Mensaje del servidor recibido', { body: msg })
+	myNotif.onclick = () => {
+		console.log('Esto no hace nada aun');
+	}
   })

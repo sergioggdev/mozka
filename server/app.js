@@ -7,8 +7,15 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+//
 var app = express();
+
+
+process.on('message', (msg) => {
+  console.log('padre dice: ', msg);
+  process.send('Hola papa!');
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
