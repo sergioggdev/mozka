@@ -1,7 +1,6 @@
 .modal {
     position: fixed;
-    background-color: #000000;
-    opacity: 0.6;
+    background-color: rgba(0, 0, 0, 0.6);
     left: 0;
     right: 0;
     top: 0;
@@ -10,11 +9,43 @@
     grid-template: 1fr 6fr 1fr / 1fr 6fr 1fr;
     z-index: 100;
 
-//    transform: translate(-50%, 0);
+    .modal__area::-webkit-scrollbar {
+        width: 0px;
+    }
     .modal__area {
+        overflow-x: hidden;
+        overflow-y: visible;
+        color: black;
         grid-area: 2 / 2 / span 1 / span 1;
-        background-color: #ffffff;
-        border-radius: 20px;
-        padding: 20px;
+        background-color: white;
+        border-radius: 0.5em;
+        padding: 1em;
+        opacity: 1;
+        text-align: center;
+        margin: auto;
+        max-height: 100%;
+        max-width: 100%;
+
+        .modal__area__title {
+            margin: 0 auto;
+            width: 100%;
+            border-radius: 1em;
+            padding: 2em 0px;
+            background-color:  blueviolet;
+
+        }
+        .modal__area__text {
+            margin: 0 auto;
+            // overflow-x: hidden;
+            // overflow-y: visible;
+            margin-top: 20px;
+            max-width: 100%;
+            // .modal__area__text__text {
+            //     color:black;
+            // }
+            // .modal__area__text__button {
+            //     color: black;
+            // }
+        }
     }
 }
