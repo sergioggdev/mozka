@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import { MainLayout } from '../layout';
@@ -20,8 +21,7 @@ export default class RouterClass extends Component {
 		
 	}
 
-	componentDidMount() {		
-		console.log(this.state);
+	componentDidMount() {
 		console.log(window.location.href);
 	}
 

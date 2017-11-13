@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import Redux, {welcome} from '../../models';
 import Slider from './slider/slider';
 import './welcome.scss';
 
@@ -55,6 +56,7 @@ export default class Welcome extends Component {
 
 	nextSlide() {
 		if (!this.wait) {
+			// Redux.dispatch(welcome(false));
 			if (slides.length-1 > this.state.activeSlide) {
 				this.wait = true;
 				this.setState({activeSlide: this.state.activeSlide + 1, animation: true});
