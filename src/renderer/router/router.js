@@ -14,14 +14,26 @@ export default class RouterClass extends Component {
 		super(props);
 		this.handleWelcome = this.handleWelcome.bind(this);
 		this.handleStart = this.handleStart.bind(this);
+		this.itemRender = null;
 		this.state = {
-			welcome: true,
+			welcome: false,
 			newProyect: true
 		};
 		
 	}
 
-	componentDidMount() {
+	componentWillMount() {	
+		// manejamos el componente que queremos cargar 
+		this.itemRender = renderFunct(this.state);
+		function renderFunct(state) {
+			switch (state) {
+				case {welcome: false, newProyect: false}: return <Dashboard />
+				case {welcome: false, newProyect: true}: return <Start />
+				default : return <Welcome/>
+			}
+		}
+
+		console.log(this.state);
 		console.log(window.location.href);
 	}
 
@@ -40,19 +52,18 @@ export default class RouterClass extends Component {
 
 	render() {
 		return (
-			<Router>
-				<MainLayout>
-					{ this.state.welcome ? <Welcome handle={this.handleWelcome}/> : <App newProyect={this.state.newProyect} /> }
-				</MainLayout>
-			</Router>
+			<div>
+			<MainLayout>
+				{this.itemRender}
+			</MainLayout>
+			</div>
 		);
 	}
 }
 
 const App = (props) => (
 	<div style={styles.app}>
-		<Route exact path="/" render={() => props.newProyect ? <Redirect to="/start" /> : <Dashboard /> } />
-		<Route exact path="/start" component={Start} />
+		<Route exact path="/" render={() => props.newProyect ? <Start handle={props.handleStart}/> : <Dashboard /> } />
 	</div>
 );
 

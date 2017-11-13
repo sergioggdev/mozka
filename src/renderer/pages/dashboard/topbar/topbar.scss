@@ -5,11 +5,12 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
 
     .top-bar__logo {
         min-width: 200px;
-        width: 30%;
-        max-width: 300px;
+        width: 70%;
+        // max-width: 300px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -18,9 +19,9 @@
     }
 
     .top-bar__box {
-        min-width: 300px;
-        width: 30%;
-        max-width: 400px;
+        // min-width: 300px;
+        width: 300px;
+        // max-width: 400px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
