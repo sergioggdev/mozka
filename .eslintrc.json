@@ -1,0 +1,19 @@
+{
+    "extends": "airbnb",
+    "env": {
+        "browser": true,
+        "node": true,
+        "commonjs": true,
+        "worker": true,
+        "jest": true,
+        "serviceworker": true
+    },
+    "globals": {
+
+    },
+    "rules": {
+        "no-debugger": "warn",
+        "indent": ["error", 4],
+        "no-console": "warn"
+    }
+}
