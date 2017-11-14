@@ -29,8 +29,6 @@ export default class Start extends Component {
 
 	proyectoNuevo() {
 		console.log(this.state)
-		debugger;
-		this.props.handle();
 		this.setState({ show: true });
 	}
 
@@ -41,6 +39,7 @@ export default class Start extends Component {
 	closeModal() {
 		console.log("cerramos modal");
 		this.setState({ show: false });
+		this.props.handle();
 		console.log("nombre proyecto",this.state.proyectName);
 	}
 
@@ -77,9 +76,7 @@ export default class Start extends Component {
 				<Modal title="Nuevo proyecto" show={this.state.show}>
 					<div>
             			<p>Nombre del proyecto: </p><input type="text" maxLength="20" value={this.state.proyectName} onChange={this.handleChange}/>
-							<Link to="/" >
-								<Button onClick={this.closeModal} size="small" color="blue" className="start__modalAcceptButton">Aceptar</Button>
-							</Link>
+						<Button onClick={this.closeModal} size="small" color="blue" className="start__modalAcceptButton">Aceptar</Button>
 					</div>
         		</Modal>
 			</section>
