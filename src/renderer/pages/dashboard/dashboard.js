@@ -16,7 +16,7 @@ export default class Dashboard extends Component {
 		*/
 		return (
 			<div className="dashboard">
-				<TopBar />
+				<TopBar proyectName={this.props.proyectName}/>
             	<Table />
 			</div>
 		);

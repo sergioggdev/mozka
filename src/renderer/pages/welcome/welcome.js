@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slider from './slider/slider';
 import './welcome.scss';
+//import Redux, {welcome} from 'models'
+
 
 import Background from './slider/fondo.jpg';
 import Background1 from './slider/fondo3.jpg';
@@ -40,7 +42,7 @@ export default class Welcome extends Component {
 		this.handleKeyPress = this.handleKeyPress.bind(this);
 		this.state = {
 			activeSlide: 0,
-			animation: null,
+			animation: null
 		};
 		
 	}
@@ -91,7 +93,7 @@ export default class Welcome extends Component {
 				<Slider 
 					title={slides[this.state.activeSlide].title} 
 					content={slides[this.state.activeSlide].content} 
-					background={slides[this.state.activeSlide].background} 
+					background={slides[this.state.activeSlide].background}
 					icon={slides[this.state.activeSlide].icon}
 					animation={this.state.animation}
 					className="welcome__slider-area"
@@ -99,7 +101,7 @@ export default class Welcome extends Component {
 				<div className="welcome__navigator">
 					<div onClick={this.backSlide}>Atras</div>
 					<div className="welcome__navigator__balls">
-						{slides.map( i => <span key={i.id}>O </span> )}
+						{slides.map( i => <span className={i.id-1 === this.state.activeSlide ? "selected" : null} key={i.id}></span> )}
 					</div>
 					<div onClick={this.nextSlide}>{siguiente}</div>
 				</div>

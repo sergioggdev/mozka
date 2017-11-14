@@ -8,8 +8,9 @@ export default class TopBar extends Component {
 
     // capture run stop
     constructor(props) {
+        debugger
         super(props);
-
+        this.proyectName = this.props.proyectName;
         this.capture = this.capture.bind(this);
         this.run = this.run.bind(this);
         this.stop = this.stop.bind(this);
@@ -35,7 +36,7 @@ export default class TopBar extends Component {
         return (
             <div className="top-bar">
                 <div className="top-bar__logo">
-                    Logo
+                   {this.proyectName}
                 </div>
                 <div className="top-bar__box">
                     <Button onClick={this.capture} size="small" className="">Capturar</Button>

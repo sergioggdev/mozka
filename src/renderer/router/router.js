@@ -15,23 +15,13 @@ export default class RouterClass extends Component {
 		this.handleStart = this.handleStart.bind(this);
 		this.itemRender = null;
 		this.state = {
-			welcome: false,
+			welcome: true,
 			newProyect: true
 		};
 		
 	}
 
 	componentWillMount() {	
-		// manejamos el componente que queremos cargar 
-		this.itemRender = renderFunct(this.state);
-		function renderFunct(state) {
-			switch (state) {
-				case {welcome: false, newProyect: false}: return <Dashboard />
-				case {welcome: false, newProyect: true}: return <Start />
-				default : return <Welcome/>
-			}
-		}
-
 		console.log(this.state);
 		console.log(window.location.href);
 	}
@@ -46,10 +36,23 @@ export default class RouterClass extends Component {
 	}
 
 	handleStart() {
-		this.setState({newProyect: false});
+		if (this.state.newProyect === true) {
+			this.setState({newProyect: false});
+		} else {
+			this.setState({newProyect:true});
+		}
+		
 	}
 
 	render() {
+		this.itemRender = renderFunct(this.state, this.handleWelcome, this.handleStart);
+		console.log(this.itemRender);
+		function renderFunct(state, handleWelcome, handleStart) {
+				if (state.welcome === false && state.newProyect === false) {return <Dashboard handle = {handleStart}/>}
+				if (state.welcome === false && state.newProyect === true) {return <Start handle = {handleStart}/>}
+				if (state.welcome === true) {return <Welcome handle =  {handleWelcome}/>}
+			
+		}
 		return (
 			<div>
 			<MainLayout>
