@@ -1,21 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './models';
 import Router from './router/router';
-import { ipcRenderer } from 'electron';
 
-render(<Router />, document.getElementById('app'));
+render(<Provider store={store}><Router/></Provider>, document.getElementById('app'));
 
 // in development, set up HMR:
 if (module.hot) {
 	module.hot.accept('./router/router', () => {
 		const NextRootContainer = require('./router/router');
-		render(<NextRootContainer />, document.getElementById('app'));
+		render(<Provider store={store}><NextRootContainer/></Provider>, document.getElementById('app'));
 	});
 }
 
 
 
-
+import { ipcRenderer } from 'electron';
 ipcRenderer.send('serverMsg', 'texto de ejemplos');
 
 ipcRenderer.on('serverMsg', (event, msg) => {

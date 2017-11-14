@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Redux, {welcome} from '../../models';
 import Slider from './slider/slider';
 import './welcome.scss';
 //import Redux, {welcome} from 'models'
@@ -63,7 +64,7 @@ export default class Welcome extends Component {
 				setTimeout( () => { this.wait = false; }, 1100);	
 			}
 			else if (slides.length-1 === this.state.activeSlide) {
-				this.props.handle();
+				Redux.dispatch(welcome(false));
 			}
 		}
 	}
