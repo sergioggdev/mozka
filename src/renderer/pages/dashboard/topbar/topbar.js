@@ -5,30 +5,29 @@ import { Button, Modal } from '../../components';
 import './topbar.scss';
 
 export default class TopBar extends Component {
-
     // capture run stop
     constructor(props) {
-        debugger
         super(props);
         this.proyectName = this.props.proyectName;
         this.capture = this.capture.bind(this);
         this.run = this.run.bind(this);
         this.stop = this.stop.bind(this);
+        this.ipcRenderer = ipcRenderer;
     }
 
     capture() {
-        console.log("capture");
-        ipcRenderer.send('serverMsg', 'capture');
+        console.log('capture');
+        this.ipcRenderer.send('serverMsg', 'capture');
     }
 
     run() {
-        console.log("run");
-        ipcRenderer.send('serverMsg', 'run');
+        console.log('run');
+        this.ipcRenderer.send('serverMsg', 'run');
     }
 
     stop() {
-        console.log("stop");
-        ipcRenderer.send('serverMsg', 'stop');
+        console.log('stop');
+        this.ipcRenderer.send('serverMsg', 'stop');
     }
 
 
@@ -36,7 +35,7 @@ export default class TopBar extends Component {
         return (
             <div className="top-bar">
                 <div className="top-bar__logo">
-                   {this.proyectName}
+                    {this.proyectName}
                 </div>
                 <div className="top-bar__box">
                     <Button onClick={this.capture} size="small" className="">Capturar</Button>

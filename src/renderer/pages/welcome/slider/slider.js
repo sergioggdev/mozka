@@ -8,7 +8,7 @@ export default class Slider extends Component {
         this.state = {
             title: null,
             content: null,
-            background: null, 
+            background: null,
             icon: null,
             animationClass: '',
             backgroundClass: '',
@@ -19,56 +19,56 @@ export default class Slider extends Component {
         this.setState({
             title: this.props.title,
             content: this.props.content,
-            background: this.props.background, 
+            background: this.props.background,
             icon: this.props.icon,
         });
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.animation === true) {
-            this.setState({animationClass: 'animationNextIn'});
-			setTimeout( () => {
-				this.setState({
+            this.setState({ animationClass: 'animationNextIn' });
+            setTimeout(() => {
+                this.setState({
                     title: this.props.title,
                     content: this.props.content,
-                    background: this.props.background, 
+                    background: this.props.background,
                     icon: this.props.icon,
-                    animationClass: 'animationNextOut'
+                    animationClass: 'animationNextOut',
                 });
-				setTimeout( () => {
-					this.setState({animationClass: ''});
-				},500);
-			},500);
+                setTimeout(() => {
+                    this.setState({ animationClass: '' });
+                }, 500);
+            }, 500);
         } else if (nextProps.animation === false) {
-            this.setState({animationClass: 'animationBackIn'});
-			setTimeout( () => {
-				this.setState({
+            this.setState({ animationClass: 'animationBackIn' });
+            setTimeout(() => {
+                this.setState({
                     title: this.props.title,
                     content: this.props.content,
-                    background: this.props.background, 
+                    background: this.props.background,
                     icon: this.props.icon,
-                    animationClass: 'animationBackOut'
+                    animationClass: 'animationBackOut',
                 });
-				setTimeout( () => { 
-					this.setState({animationClass: ''});
-				},500);
-			},500);
+                setTimeout(() => {
+                    this.setState({ animationClass: '' });
+                }, 500);
+            }, 500);
         }
     }
 
-	render() {
-		return (			
+    render() {
+        return (
             <div className={`slide ${this.props.className}`}>
                 <div className="slide__background" style={this.state.background} />
                 <div className="slide__background-gradient" />
                 <div className={`slide__area-text ${this.state.animationClass}`}>
-                    <img src={this.state.icon}/>
+                    <img src={this.state.icon} alt="icono" />
                     <h3>{this.state.title}</h3>
                     <p>{this.state.content}</p>
                 </div>
-            </div>   
-		);
-	}
+            </div>
+        );
+    }
 }
 
 Slider.propTypes = {
@@ -76,5 +76,5 @@ Slider.propTypes = {
     content: PropTypes.string.isRequired,
     background: PropTypes.object.isRequired,
     icon: PropTypes.string.isRequired,
-    animation: PropTypes.bool
+    animation: PropTypes.bool,
 };

@@ -6,23 +6,23 @@ import './modal.scss';
 export default class Modal extends Component {
 
     // componentWillMount() {
-	// 	console.log('se va a montar la modal')
-	// }
-	// componentDidMount() {
-	// 	console.log('la modal ya se monto')
-	// }
+    // 	console.log('se va a montar la modal')
+    // }
+    // componentDidMount() {
+    // 	console.log('la modal ya se monto')
+    // }
 
-	// componentWillUpdate(nextProps, nextState) {
-	// 	console.log('se actualiza la modal',this.props.show)
-	// }
+    // componentWillUpdate(nextProps, nextState) {
+    // 	console.log('se actualiza la modal',this.props.show)
+    // }
 
-	// componentWillUnmount() {
-	// 	console.log('la modal se va adesmontar')
-	// }
+    // componentWillUnmount() {
+    // 	console.log('la modal se va adesmontar')
+    // }
 
-	// componentDidCatch(error, info) {
-	// 	console.log('salio un error en la modal', error)
-	// }
+    // componentDidCatch(error, info) {
+    // 	console.log('salio un error en la modal', error)
+    // }
 
     render() {
         let show = this.props.show;
@@ -47,5 +47,5 @@ export default class Modal extends Component {
 
 Modal.propTypes = {
     title: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
 };

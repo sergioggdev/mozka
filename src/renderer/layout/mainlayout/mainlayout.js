@@ -5,19 +5,19 @@ import { Footer, Header } from '../components';
 import './mainlayout.scss';
 
 export default class MainLayout extends Component {
-	render() {
-		return (
-			<div className="layout">
+    render() {
+        return (
+            <div className="layout">
                 <Header />
-					<main>
-						{this.props.children}
-					</main>
+                    <main>
+                        {this.props.children}
+                    </main>
                 <Footer />
-			</div>
-		);
-	}
+            </div>
+        );
+    }
 }
 
 MainLayout.propTypes = {
-	children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
 };

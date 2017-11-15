@@ -14,6 +14,10 @@
     "rules": {
         "no-debugger": "warn",
         "indent": ["error", 4],
-        "no-console": "warn"
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "no-console": "warn",
+        "no-unused-vars": "warn",
+        "react/jsx-filename-extension": ["error", { "extensions": [".js"] }]
     }
 }

@@ -7,7 +7,7 @@ import initialState from './initialstore';
 
 const logger = createLogger({
     collapsed: true,
-  });
+});
 
-const middleware = composeWithDevTools( applyMiddleware(logger) );
+const middleware = composeWithDevTools(applyMiddleware(logger));
 export default createStore(rootReducer, initialState, middleware);
