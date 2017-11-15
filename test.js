@@ -5,23 +5,22 @@ let Trainer = synaptic.Trainer;
 let Architect = synaptic.Architect;
 
 
-function Perceptron(input, hidden, output)
-{
-	// create the layers
-	var inputLayer = new synaptic.Layer(input);
-	var hiddenLayer = new synaptic.Layer(hidden);
-	var outputLayer = new synaptic.Layer(output);
+function Perceptron(input, hidden, output) {
+    // create the layers
+    var inputLayer = new synaptic.Layer(input);
+    var hiddenLayer = new synaptic.Layer(hidden);
+    var outputLayer = new synaptic.Layer(output);
 
-	// connect the layers
-	inputLayer.project(hiddenLayer);
-	hiddenLayer.project(outputLayer);
+    // connect the layers
+    inputLayer.project(hiddenLayer);
+    hiddenLayer.project(outputLayer);
 
-	// set the layers
-	this.set({
-		input: inputLayer,
-		hidden: [hiddenLayer],
-		output: outputLayer
-	});
+    // set the layers
+    this.set({
+        input: inputLayer,
+        hidden: [hiddenLayer],
+        output: outputLayer
+    });
 }
 
 // extend the prototype chain
@@ -42,42 +41,32 @@ myPerceptron.activate([1,1]); // 0.02128894618097928
 
 
 
-
-
-
-
-function esperar(time, callBack) {
-	var time = Date.now() + time;
-	while(Date.now() < time) {}
-	if(callBack) {callBack();}
-}
-
-//////////////////////////////////////////////////
-setTimeout( ()=> {
-	console.log('B');
+/* *************** Prueba asincronia 1 *************** */
+setTimeout( () => {
+    console.log('B');
 }, 2000);
 
 esperar(3000, () => {
-	console.log('C');
+    console.log('C');
 });
 
-setTimeout( ()=> {
-	console.log('A');
+setTimeout( () => {
+    console.log('A');
 }, 1000);
-////////////////////////////////////////////////////////
+/* *************************************************** */
 
 
-
-
-
-
-//////////////////////////////////////////////////////
+/* *************** Prueba asincronia 2 *************** */
 window.addEventListener('click', function() {
-	console.log('hago click');
+    console.log('hago click');
 })
 
-setTimeout( ()=> {
-	esperar(3000);
+setTimeout(()=> {
+    esperar(3000);
 }, 1);
-
-/////////////////////////////////////////////////////
+/* *************************************************** */
+function esperar(time, callBack) {
+    const timer = Date.now() + time;
+    while (Date.now() < timer) { /**/ }
+    if (callBack) { callBack(); }
+}

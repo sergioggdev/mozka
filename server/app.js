@@ -1,27 +1,24 @@
-var path = require('path');
-var http = require('http');
-var express = require('express');
-var io = require('socket.io');
-var debug = require('debug')('servidor:server');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const path = require('path');
+const http = require('http');
+const express = require('express');
+const io = require('socket.io');
+const debug = require('debug')('servidor:server');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const index = require('./routes/index');
 
-var index = require('./routes/index');
-//
-var app = express();
+const app = express();
 
+process.on('message', (msg) => {
+    console.log('padre dice: ', msg);
+    process.send('Hola papa!');
+});
 
 /* io.on('connection', function(socket){
   console.log('a user connected');
 }); */
-
-
-process.on('message', (msg) => {
-  console.log('padre dice: ', msg);
-  process.send('Hola papa!');
-});
 
 
 // view engine setup
@@ -29,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -75,10 +72,10 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
-let socket = io(server)
-socket.on('connection', function(socket) {
-  console.log('a user connected');
+const server = http.createServer(app);
+const socket = io(server);
+socket.on('connection', (socket) => {
+    console.log('a user connected');
 });
 /**
  * Listen on provided port, on all network interfaces.
