@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './header.scss';
 
 export default class Header extends Component {
-	render() {
-		return (
-			<header className="header">
+    render() {
+        return (
+            <header className="header">
                 <div className="header__menu">
                     <menu>Archivo</menu>
                     <menu>Editar</menu>
@@ -19,7 +19,7 @@ export default class Header extends Component {
                     <menu>O</menu>
                     <menu>X</menu>
                 </div>
-			</header>
-		);
-	}
+            </header>
+        );
+    }
 }

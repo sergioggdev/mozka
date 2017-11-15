@@ -1,8 +1,10 @@
 export * from './actions';
+let configStore;
+
 if (process.env.NODE_ENV === 'production') {
-  var configStore = require('./store/configstore.prod');
+    configStore = require('./store/configstore.prod');
 } else {
-  var configStore = require('./store/configstore.dev');  
+    configStore = require('./store/configstore.dev');  
 }
 
 export default configStore.default; 

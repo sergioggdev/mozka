@@ -5,5 +5,5 @@ import Dashboard from './dashboard/dashboard';
 export {
     Welcome,
     Start,
-    Dashboard
+    Dashboard,
 };
