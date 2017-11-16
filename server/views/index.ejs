@@ -8,6 +8,7 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <script type="application/javascript">
+    const url = 'http://localhost:3000/serviceworker.js';
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
         navigator.serviceWorker.register(url).then(function(registration) {
@@ -17,7 +18,12 @@
         });
       });
     }
-    const url = 'http://localhost:3000/js/serviceworker.js';
+    window.addEventListener('load', function() {
+      fetch('https://swapi.co/api/people/')
+        .then((res) => res.json())
+        .then((res) => { console.log(res); })
+
+    });
     </script>
     
   </body>
