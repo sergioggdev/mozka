@@ -3,7 +3,6 @@ const http = require('http');
 const express = require('express');
 const WebSocket = require('ws');
 const logger = require('morgan');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
 

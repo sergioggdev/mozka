@@ -11,26 +11,28 @@ this.addEventListener('fetch', (event) => {
     if (event.request.url === 'https://swapi.co/api/people/') {
         fetch(event.request).then((response) => {
             const copia = response.clone();
-            console.log(copia);
+            // console.log('respuesta', copia);
             copia.json().then((formatData) => {
-                console.log(formatData);
                 fetch('http://localhost:3000/api', {
                     method: 'POST',
                     mode: 'cors',
                     headers: new Headers({ 'Content-Type': 'application/json' }),
-                    body: JSON.stringify(formatData),
+                    body: JSON.stringify({
+                        bodyUsed: copia.bodyUsed,
+                        ok: copia.ok,
+                        redirected: copia.redirected,
+                        status: copia.status,
+                        statusText: copia.statusText,
+                        type: copia.type,
+                        url: copia.url,
+                        body: formatData,
+                    }),
                 })
                     .then(res => res.json())
                     .then((res) => { console.log(res); });
             });
             return response;
         });
-
-        /* const obj = { hola: 'asda' };
-        const obj2 = JSON.stringify(obj);
-        const blob = new Blob([obj2], { type: 'application/json' });
-        const rest = new Response(blob);
-        event.respondWith(rest); */
     }
 });
 
