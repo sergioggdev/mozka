@@ -7,4 +7,4 @@ if (process.env.NODE_ENV === 'production') {
     configStore = require('./store/configstore.dev');  
 }
 
-export default configStore.default; 
+export default configStore.default;

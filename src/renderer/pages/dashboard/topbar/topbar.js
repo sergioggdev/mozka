@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { ipcRenderer } from 'electron';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Modal } from '../../components';
 import './topbar.scss';
 
-export default class TopBar extends Component {
+export class TopBar extends Component {
     // capture run stop
     constructor(props) {
         super(props);
-        this.proyectName = this.props.proyectName;
+        this.proyectName = props.proyectName;
         this.capture = this.capture.bind(this);
         this.run = this.run.bind(this);
         this.stop = this.stop.bind(this);
@@ -16,17 +17,14 @@ export default class TopBar extends Component {
     }
 
     capture() {
-        console.log('capture');
         this.ipcRenderer.send('serverMsg', 'capture');
     }
 
     run() {
-        console.log('run');
         this.ipcRenderer.send('serverMsg', 'run');
     }
 
     stop() {
-        console.log('stop');
         this.ipcRenderer.send('serverMsg', 'stop');
     }
 
@@ -49,3 +47,12 @@ export default class TopBar extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        proyectName: state.proyect.name,
+    }
+}
+
+
+export default connect(mapStateToProps)(TopBar);

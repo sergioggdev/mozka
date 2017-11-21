@@ -5,10 +5,13 @@ import Table from './table/table';
 import './dashboard.scss';
 
 export default class Dashboard extends Component {
+    shouldComponentUpdate() {
+        return true;
+    }
     render() {
         /*
         * Welcome a la parte mas complicada
-        * Aqui tenemos que hacer el panel entero de gestion, 
+        * Aqui tenemos que hacer el panel entero de gestion,
         * donde podra dar al boton de capturar para que programa empiece a capturar servicios
         * Donde el boton servir levantaa un servidor para servir esos servicios
         * Una tala con todos los servocios para poder editarlos y o activarlos
@@ -16,7 +19,7 @@ export default class Dashboard extends Component {
         */
         return (
             <div className="dashboard">
-                <TopBar proyectName={this.props.proyectName}/>
+                <TopBar />
                 <Table />
             </div>
         );
