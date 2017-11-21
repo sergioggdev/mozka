@@ -7,16 +7,17 @@
     "author": "sergio",
     "scripts": {
         "start": "electron-webpack dev",
-        "server": "nodemon ./server/app.js",
+        "server": "nodemon --inspect ./server/app.js",
         "compile": "electron-webpack",
         "run-compile": "electron ./dist/main/main.js",
         "dist": "yarn compile && electron-builder",
         "dist:dir": "yarn dist -- --dir -c.compression=store -c.mac.identity=null"
     },
     "dependencies": {
-        "cookie-parser": "^1.4.3",
-        "morgan": "^1.9.0",
+        "body-parser": "^1.18.2",
         "electron": "^1.7.9",
+        "express": "^4.16.2",
+        "morgan": "^1.9.0",
         "prop-types": "^15.6.0",
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
@@ -26,10 +27,9 @@
         "redux": "^3.7.2",
         "redux-devtools-extension": "^2.13.2",
         "redux-logger": "^3.0.6",
-        "serve-favicon": "^2.4.5",
-        "socket.io": "^2.0.4",
         "source-map-support": "^0.5.0",
-        "synaptic": "^1.1.4"
+        "synaptic": "^1.1.4",
+        "ws": "^3.3.1"
     },
     "devDependencies": {
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
