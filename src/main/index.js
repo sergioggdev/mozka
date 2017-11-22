@@ -10,21 +10,34 @@ console.log('url Desarrollo', `http://localhost:${process.env.ELECTRON_WEBPACK_W
 console.log('url Produccion', `file://${path.join(__dirname, '..', 'renderer', 'index.html')}`);
 
 //
-ipcMain.on('serverMsg', (event, msg) => {
-    event.sender.send('serverMsg', msg);
-
-    if (false) {
-        let server1 = createServer();
-        server1.send('hola holita');
-        server1.on(msg => {
-            console.log('hijo dice: ', msg);
-        })
-    }
-});
+// ipcMain.on('serverMsg', (event, msg) => {
+//     event.sender.send('serverMsg', msg);
+//     if (false) {
+//         let server1 = createServer();
+//         server1.send('hola holita');
+//         server1.on(msg => {
+//             console.log('hijo dice: ', msg);
+//         })
+//     }
+// });
 //
 
-let mainWindow; // Referencia global a la ventana principal, necesario para evitar el recolector de basura.
 
+// codigo de desarrollo servidor, necesario para la implementacion del back
+const server1 = createServer();
+server1.send('hola hijo');
+server1.on((msg) => {
+    if (msg.type === 'post') {
+        console.log('envio de datos', msg);
+    } else {
+        console.log('hijo dice: ', msg);
+    }
+});
+// ///////////////////////////////////////////////////////////////////////////
+
+
+let mainWindow; // Referencia global a la ventana principal, necesario para evitar el recolector de basura.
+let contents;
 app.on('window-all-closed', () => {
     // No se cierra el programa al cerrar la venta si es MAC OS
     if (process.platform !== 'darwin') { app.quit(); }
@@ -44,10 +57,15 @@ app.on('ready', () => {
         .then(name => console.log(`Added Extension:  ${name}`))
         .catch(err => console.log('An error occurred: ', err));
     mainWindow = createMainWindow();
+    contents = mainWindow.webContents;
+
+    setInterval(() => {
+        contents.reload();
+    }, 5000);
 });
 
 
-////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////
 function createMainWindow() {
     // Constructor de la ventana princpal
     let win = new BrowserWindow({

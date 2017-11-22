@@ -9,6 +9,8 @@ router.get('/', (req, res) => {
 
 router.post('/api', (req, res) => {
     console.log(req.headers, req.body);
+    const trasnferObj = req.body;
+    trasnferObj.type = 'post';
     process.send(req.body);
     res.send({ data: 'OK' });
 });
