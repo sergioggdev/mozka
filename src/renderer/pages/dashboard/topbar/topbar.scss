@@ -1,5 +1,7 @@
 .top-bar {
-    background-color: #5a4cda;
+    // background: linear-gradient(90deg,blue, #4069a7);
+    background: linear-gradient(90deg, #474753, #071a38);
+    // background-color: #5a4cda;
     padding: 0 20px;
     display: flex;
     flex-direction: row;
@@ -10,6 +12,8 @@
     .top-bar__logo {
         min-width: 200px;
         width: 70%;
+        font-size: 2em;
+        color: white;
         // max-width: 300px;
         display: flex;
         flex-direction: row;

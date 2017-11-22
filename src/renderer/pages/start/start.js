@@ -34,7 +34,6 @@ export class Start extends Component {
 
     handleChange(e) {
         this.pName = e.target.value;
-        // console.log('pName', this.pName);
     }
 
     closeModal() {
@@ -68,12 +67,12 @@ export class Start extends Component {
         return (
             <section className="start">
                 <div className="start__new">
-                    <Button onClick={this.proyectoNuevo} size="large" color="blue">
+                    <Button onClick={this.proyectoNuevo} size="large" color="start">
                         Nuevo proyecto {this.props.a}
                     </Button>
                 </div>
                 <div className="start__help" >
-                    <Button onClick={this.load} size="large" color="blue">Cargar</Button>
+                    <Button onClick={this.load} size="large" color="start">Cargar</Button>
                 </div>
 
                 <Modal title="Nuevo proyecto" show={this.props.popup}>
@@ -86,10 +85,11 @@ export class Start extends Component {
                                 type="text"
                                 maxLength="20"
                                 onChange={this.handleChange}
+                                autoFocus="true"
                             />
                             <Button
                                 size="small"
-                                color="blue"
+                                color="start"
                                 className="start__modalAcceptButton"
                                 onClick={this.closeModal}
                             >

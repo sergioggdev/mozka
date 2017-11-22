@@ -5,6 +5,6 @@ export default {
         popup: false,
     },
     proyect: {
-        name: 'sa',
+        name: null,
     },
 };
