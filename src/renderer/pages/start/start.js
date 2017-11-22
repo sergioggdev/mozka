@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import Electron from 'electron';
-// import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Redux, { popup, proyectName, newProyect, all } from '../../models';
 import { Button, Modal } from '../components';
 import './start.scss';
 
-export default class Start extends Component {
+export class Start extends Component {
     constructor(props) {
         super(props);
         this.proyectoNuevo = this.proyectoNuevo.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.load = this.load.bind(this);
-        this.state = {
-            show: false,
-            proyectName: '',
-        };
+        this.Electron = Electron;
+        this.Redux = Redux;
+        this.pName = null;
+        this.routerAll = {};
     }
 
     load() {
@@ -28,19 +29,18 @@ export default class Start extends Component {
     }
 
     proyectoNuevo() {
-        console.log(this.state)
-        this.setState({ show: true });
+        this.Redux.dispatch(popup(true));
     }
 
-    handleChange(event) {
-        this.setState({ proyectName: event.target.value });
+    handleChange(e) {
+        this.pName = e.target.value;
     }
 
     closeModal() {
-        console.log('cerramos modal');
-        this.setState({ show: false });
-        this.props.handle();
-        console.log('nombre proyecto', this.state.proyectName);
+        this.routerAll.popup = false;
+        this.routerAll.newProyect = false;
+        this.Redux.dispatch(proyectName(this.pName));
+        this.Redux.dispatch(all(this.routerAll));
     }
 
     // componentWillMount() {
@@ -67,36 +67,48 @@ export default class Start extends Component {
         return (
             <section className="start">
                 <div className="start__new">
-                    <Button onClick={this.proyectoNuevo} size="large" color="blue">
-                        Nuevo proyecto
+                    <Button onClick={this.proyectoNuevo} size="large" color="start">
+                        Nuevo proyecto {this.props.a}
                     </Button>
                 </div>
                 <div className="start__help" >
-                    <Button onClick={this.load} size="large" color="blue">Cargar</Button>
+                    <Button onClick={this.load} size="large" color="start">Cargar</Button>
                 </div>
 
-                <Modal title="Nuevo proyecto" show={this.state.show}>
+                <Modal title="Nuevo proyecto" show={this.props.popup}>
                     <div>
-                        <p>
-                            Nombre del proyecto:
-                        </p>
-                        <input
-                            type="text"
-                            maxLength="20"
-                            value={this.state.proyectName}
-                            onChange={this.handleChange}
-                        />
-                        <Button
-                            onClick={this.closeModal}
-                            size="small"
-                            color="blue"
-                            className="start__modalAcceptButton"
-                        >
-                            Aceptar
-                        </Button>
+                        <form>
+                            <p>
+                                Nombre del proyecto:
+                            </p>
+                            <input
+                                type="text"
+                                maxLength="20"
+                                onChange={this.handleChange}
+                                autoFocus="true"
+                            />
+                            <Button
+                                size="small"
+                                color="start"
+                                className="start__modalAcceptButton"
+                                onClick={this.closeModal}
+                            >
+                                Aceptar
+                            </Button>
+                        </form>
                     </div>
                 </Modal>
             </section>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        popup: state.router.popup,
+        proyectName: state.proyect.name,
+        newProyect: state.router.newProyect,
+    }
+}
+
+export default connect(mapStateToProps)(Start);

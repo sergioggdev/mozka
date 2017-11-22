@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '../button/button';
 import './modal.scss';
 
 export default class Modal extends Component {
 
-    // componentWillMount() {
-    // 	console.log('se va a montar la modal')
-    // }
+    componentWillMount() {
+        console.log('se va a montar la modal')
+    }
     // componentDidMount() {
     // 	console.log('la modal ya se monto')
     // }
@@ -36,7 +36,7 @@ export default class Modal extends Component {
                 </div>
             </div>
         );
-        return(
+        return (
             <div>
                 { show ? modal : null }
             </div>

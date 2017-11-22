@@ -1,11 +1,10 @@
 export default {
     router: {
-        welcome: true,
+        welcome: false,
         newProyect: true,
         popup: false,
     },
     proyect: {
-        name: true,
+        name: null,
     },
-
 };
