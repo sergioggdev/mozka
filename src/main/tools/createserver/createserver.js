@@ -12,14 +12,17 @@ export default () => {
         }
         stop() {
             this.server.disconnect();
+            return this;
         }
         send(msg) {
             this.server.send(msg);
+            return this;
         }
         on(callBack) {
             this.server.on('message', (msg) => {
                 callBack(msg);
             });
+            return this;
         }
     }
     return new Server();
