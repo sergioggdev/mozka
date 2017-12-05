@@ -3,7 +3,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ipcRenderer } from 'electron';
 import store from './models';
+import { DB } from './tools';
 import Router from './router/router';
+import { setTimeout } from 'timers';
 
 render(<Provider store={store}><Router /></Provider>, document.getElementById('app'));
 
@@ -19,85 +21,64 @@ if (module.hot) {
 ipcRenderer.send('serverMsg', 'texto de ejemplos');
 
 ipcRenderer.on('serverMsg', (event, msg) => {
-    let myNotif = new Notification('Mensaje del servidor recibido', { body: msg });
+    const myNotif = new Notification('Mensaje del servidor recibido', { body: msg });
     myNotif.onclick = () => {
         console.log('Esto no hace nada aun');
-    }
+    };
 });
+
+const data = DB('proyect');
+console.log('=============== Base de datos:', data);
 
 ipcRenderer.on('postData', (event, msg) => {
     console.log(msg);
+    data.on(() => {
+        data.add(undefined, msg);
+    });
 });
 
 
-// ///////////////////////////////////////////////////////////////////////////////////////////
-// En la siguiente linea, puede incluir prefijos de implementacion que quiera probar.
-// window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-// No use "var indexedDB = ..." Si no está en una función.
-// Por otra parte, puedes necesitar referencias a algun objeto window.IDB*:
-// window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
-// window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
-// (Mozilla nunca ha prefijado estos objetos, por lo tanto no necesitamos window.mozIDB*)
+data.on((db) => {
+    // db.add(undefined, { as: '1231', frg: '123144' }).then((data) => {
+    //     console.log('creado', data);
+    // });
 
-/* if (!window.indexedDB) {
-    window.alert("Su navegador no soporta una versión estable de indexedDB.Tal y como las características no serán validas");
-}
+    db.findAll().then((data) => {
+        console.log('respuesta', data);
+    });
 
-var db;
-var request = indexedDB.open("MyTestDatabase");
-request.onerror = function(event) {
-  alert("Why didn't you allow my web app to use IndexedDB?!");
-};
-request.onsuccess = function(event) {
-  db = request.result;
-};
+    const obj = {
+        response: {
+            bodyUsed: true,
+            ok: true,
+            headers: null,
+            redirected: false,
+            status: 200,
+            statusText: '',
+            type: 'cors',
+            url: 'https://swapi.co/api/people/',
+            body: {
+                count: 87,
+                next: 'https://swapi.co/api/people/?page=2',
+                previous: null,
+                results: [Array],
+            },
+        },
+        request: {
+            bodyUsed: false,
+            credentials: 'omit',
+            headers: null,
+            integrity: '',
+            method: 'GET',
+            mode: 'cors',
+            referrer: 'http://localhost:3000/',
+            referrerPolicy: 'no-referrer-when-downgrade',
+            url: 'https://swapi.co/api/people/',
+        },
+        type: 'post',
+    };
 
-db.onerror = function(event) {
-    // Generic error handler for all errors targeted at this database's
-    // requests!
-    alert("Database error: " + event.target.errorCode);
-  };
-
-  // Este evento solamente está implementado en navegadores recientes
-request.onupgradeneeded = function(event) { 
-    var db = event.target.result;
-  
-    // Crea un almacén de objetos (objectStore) para esta base de datos
-    var objectStore = db.createObjectStore("name", { keyPath: "myKey" });
-  };
-
-
-
-  const dbName = "the_name";
-  
-  var request = indexedDB.open(dbName, 2);
-  
-  request.onerror = function(event) {
-    // Manejar errores.
-  };
-  request.onupgradeneeded = function(event) {
-    var db = event.target.result;
-  
-    // Se crea un almacén para contener la información de nuestros cliente
-    // Se usará "ssn" como clave ya que es garantizado que es única
-    var objectStore = db.createObjectStore("customers", { keyPath: "ssn", autoIncrement : true });
-  
-    // Se crea un índice para buscar clientes por nombre. Se podrían tener duplicados
-    // por lo que no se puede usar un índice único.
-    objectStore.createIndex("name", "name", { unique: false });
-  
-    // Se crea un índice para buscar clientespor email. Se quiere asegurar que
-    // no puedan haberdos clientes con el mismo email, asi que se usa un índice único.
-    objectStore.createIndex("email", "email", { unique: true });
-  
-    // Se usa transaction.oncomplete para asegurarse que la creación del almacén 
-    // haya finalizado antes de añadir los datos en el.
-    objectStore.transaction.oncomplete = function(event) {
-      // Guarda los datos en el almacén recién creado.
-      var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
-      for (var i in customerData) {
-        customerObjectStore.add(customerData[i]);
-      }
-    }
-  };
- */
+    db.find('request', obj.request).then((data) => {
+        console.log('llamada 2', data);
+    });
+});

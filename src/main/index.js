@@ -35,6 +35,7 @@ app.on('ready', () => {
 
 // codigo de desarrollo servidor, necesario para la implementacion del back
 // createServer().on((msg) => {
+//     console.log(msg);
 //     switch (msg.type) {
 //     case 'post':
 //         mainWindow.send('postData', msg);

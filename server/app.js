@@ -1,3 +1,5 @@
+
+
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -62,8 +64,27 @@ const socket = new WebSocket.Server({ server });
 socket.on('connection', (ws) => {
     console.log('a user connected');
     ws.on('message', (msg) => {
-        console.log(msg);
+        console.log('Mensaje desde ServiceWorker:', msg);
     });
-    ws.send('Hola, te envio un mensaje por websokets');
-});
 
+    const stopServer = {
+        type: 'stopServer',
+        text: 'Se ha cerrado la sesion con Mozca',
+        img: 'https://icon-icons.com/icons2/860/PNG/512/embarrass_icon-icons.com_67803.png',
+    };
+
+    const startServer = {
+        type: 'startServer',
+        text: 'Mozca esta levantado, disfrutalo!!',
+        img: 'https://icon-icons.com/icons2/860/PNG/512/wink_icon-icons.com_67813.png',
+    };
+
+
+    setTimeout(() => {
+        ws.send(JSON.stringify(startServer));
+    }, 5000);
+
+    setTimeout(() => {
+        ws.send(JSON.stringify(stopServer));
+    }, 10000);
+});
