@@ -1,5 +1,3 @@
-
-
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -69,22 +67,24 @@ socket.on('connection', (ws) => {
 
     const stopServer = {
         type: 'stopServer',
-        text: 'Se ha cerrado la sesion con Mozca',
+        text: 'El servidor de Mozka esta parado',
         img: 'https://icon-icons.com/icons2/860/PNG/512/embarrass_icon-icons.com_67803.png',
+        data: null,
     };
 
     const startServer = {
         type: 'startServer',
         text: 'Mozca esta levantado, disfrutalo!!',
         img: 'https://icon-icons.com/icons2/860/PNG/512/wink_icon-icons.com_67813.png',
+        data: null,
     };
 
 
-    setTimeout(() => {
-        ws.send(JSON.stringify(startServer));
-    }, 5000);
+    // setTimeout(() => {
+    //     ws.send(JSON.stringify(startServer));
+    // }, 5000);
 
-    setTimeout(() => {
-        ws.send(JSON.stringify(stopServer));
-    }, 10000);
+    // setTimeout(() => {
+    //     ws.send(JSON.stringify(stopServer));
+    // }, 10000);
 });

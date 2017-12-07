@@ -5,101 +5,69 @@ this.addEventListener('install', (event) => {
 });
 
 this.addEventListener('activate', (event) => {
-    console.log('serviceworker activado', event);
+    console.log('serviceworker activate', event);
 });
 
 this.addEventListener('fetch', (event) => {
-    // console.log('serviceworker fetch', event.request);
-    if (event.request.url === 'http://localhost:3000/api') {
-        console.log('fetch', event.request);
-        const hola = event.request.clone();
-        hola.url = 'http://localhost:3000/api';
-        fetch(hola);
-        fetch(event.request).then((response) => {
-            // console.log('respuesta', response);
-            response.json().then((formatData) => {
-                // console.log('formatData', formatData);
-                fetch('http://localhost:3000/api', {
+    console.log('serviceworker fetch', event.request);
+    if (true) {
+        if (!event.request.url.includes(event.request.referrer)) {
+            // console.log('fetch', event.request);
+            event.respondWith(serialize(event.request.clone()).then((obj) => {
+                return fetch('http://localhost:3000/api', {
                     method: 'POST',
                     mode: 'cors',
                     headers: new Headers({ 'Content-Type': 'application/json' }),
-                    body: JSON.stringify({
-                        response: {
-                            bodyUsed: response.bodyUsed,
-                            ok: response.ok,
-                            headers: null,
-                            redirected: response.redirected,
-                            status: response.status,
-                            statusText: response.statusText,
-                            type: response.type,
-                            url: response.url,
-                            body: formatData,
-                        },
-                        request: {
-                            bodyUsed: event.request.bodyUsed,
-                            credentials: event.request.credentials,
-                            headers: null,
-                            integrity: event.request.integrity,
-                            method: event.request.method,
-                            mode: event.request.mode,
-                            redirect: event.request.edirect,
-                            referrer: event.request.referrer,
-                            referrerPolicy: event.request.referrerPolicy,
-                            url: event.request.url,
-                        },
-                    }),
-                })
-                    .then(res => res.json())
-                    .then((res) => { console.log(res); });
-            });
-            return response;
-        });
+                    body: JSON.stringify(obj),
+                });
+            }));
+        } else {
+            event.respondWith(fetch(event.request));
+        }
+    } else {
+        event.respondWith(fetch(event.request));
     }
 });
+
 
 this.addEventListener('message', (event) => {
-    console.log('SW Received Message:', event);
-});
+    console.log('SW Received Message:', event.data);
 
+    // Websocket
+    const url = event.data.replace('http', 'ws');
+    const Socket = new WebSocket(url);
+    Socket.onopen = () => { console.log('Socket', 'Se ha abierto una session'); };
+    Socket.onerror = (err) => { console.error('Socket', err); };
 
-// Websocket
-const Socket = new WebSocket('ws://localhost:3000');
-
-Socket.onopen = () => {
-    console.log('Socket', 'Se ha abierto una session');
-};
-
-Socket.onerror = (event) => {
-    console.error('Socket', event);
-};
-
-Socket.onclose = () => {
-    console.log('Socket', 'Se ha cerrado la sesion');
-    entorno = false;
-    sendNotification({
-        type: 'closeConection',
-        text: 'Se ha cerrado la sesion con Mozca',
-        img: 'https://icon-icons.com/icons2/860/PNG/512/wink_icon-icons.com_67813.png',
-    });
-};
-
-Socket.onmessage = (event) => {
-    console.log('Socket', event.data);
-    const data = JSON.parse(event.data);
-    if (!data.text && !data.img && !data.type) { throw new Error('El obj del mensaje esta incompleto'); }
-    switch (data.type) {
-    case 'startServer':
-        entorno = true;
-        sendNotification(data);
-        break;
-    case 'stopServer':
+    Socket.onclose = () => {
+        console.log('Socket', 'Se ha cerrado la sesion con Mozca');
         entorno = false;
-        sendNotification(data);
-        break;
-    default:
-        break;
-    }
-};
+        sendNotification({
+            type: 'closeConection',
+            text: 'Se ha cerrado la sesion con Mozca',
+            img: 'http://2.bp.blogspot.com/-CnnX6EglcmM/U5XWoubzCtI/AAAAAAAAIKw/mU_9oDtBs6I/s1600/crying-smiley.png',
+            data: null,
+        });
+    };
+
+    Socket.onmessage = (msg) => {
+        console.log('Socket', msg.data);
+        const data = JSON.parse(msg.data);
+        if (!data.text && !data.img && !data.type) { throw new Error('El obj del mensaje esta incompleto'); }
+        switch (data.type) {
+        case 'startServer':
+            entorno = true;
+            sendNotification(data);
+            break;
+        case 'stopServer':
+            entorno = false;
+            sendNotification(data);
+            break;
+        default:
+            break;
+        }
+    };
+});
 
 
 // ************ Auxiliar function ************ //
@@ -109,4 +77,32 @@ function sendNotification(data) {
             i.postMessage(data);
         });
     });
+}
+
+
+function serialize(request) {
+    const headers = {};
+    for (const entry of request.headers.entries()) {
+        headers[entry[0]] = entry[1];
+    }
+    const serialized = {
+        url: request.url,
+        bodyUsed: request.bodyUsed,
+        headers,
+        method: request.method,
+        mode: request.mode,
+        integrity: request.integrity,
+        credentials: request.credentials,
+        cache: request.cache,
+        redirect: request.redirect,
+        referrer: request.referrer,
+        referrerPolicy: request.referrerPolicy,
+    };
+    if (request.method !== 'GET' && request.method !== 'HEAD') {
+        return request.clone().text().then((body) => {
+            serialized.body = body;
+            return Promise.resolve(serialized);
+        });
+    }
+    return Promise.resolve(serialized);
 }
