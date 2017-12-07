@@ -1,6 +1,7 @@
 'use strict';
 import path from 'path';
 import { app, BrowserWindow, ipcMain } from 'electron';
+import { createMenu } from './components/index';
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 import { createServer, createMainWindow } from './tools';
 const isDevelopment = process.env.NODE_ENV !== 'production';
