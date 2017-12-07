@@ -119,14 +119,15 @@
         }
     }
 
-    .blue {
-        background-color: #58aad9;
+    .start {
+        text-shadow: 1px 1px 1px #000;
+        background: linear-gradient(-90deg, #4069a7, #82bf83);
         color: white;
         &:before, &:after {
-            border-color: #2d3e4d;
+            border-color: #414141;
         }
         span:before, span:after {
-            border-color: #2d3e4d;
+            border-color: #414141;
         }
     }
     .red {

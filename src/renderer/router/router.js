@@ -1,69 +1,63 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { HashRouter as Router, Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux';
+// import { HashRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import { MainLayout } from '../layout';
-import { Start, Welcome, Dashboard } from '../pages';
+import { Start, Welcome, Dashboard } from '../pages'; 
 
 import './router.css';
 
-//region
-export default class RouterClass extends Component {
-	constructor(props) {
-		super(props);
-		this.handleWelcome = this.handleWelcome.bind(this);
-		this.handleStart = this.handleStart.bind(this);
-		this.state = {
-			welcome: true,
-			newProyect: true
-		};
-		
-	}
+export class RouterClass extends Component {
+    constructor(props) {
+        super(props);
+        this.itemRender = null;
+    }
 
-	componentDidMount() {		
-		console.log(this.state);
-		console.log(window.location.href);
-	}
+    componentWillMount() {
+        console.log(this.props)
+    }
+    componentDidMount() {
+        console.log('el componente ya se monto')
+    }
 
-	componentDidUpdate() {
-		console.log(window.location.href);
-	}
+    componentWillUpdate(nextProps, nextState) {
+        console.log('se actualiza', nextProps)
+    }
 
+    componentWillUnmount() {
+        console.log('el componente se va adesmontar')
+    }
 
-	handleWelcome() {
-		this.setState({welcome: false});
-	}
+    render() {
+        // console.log(this.itemRender);
+        this.itemRender = () => {
+            if (this.props.welcome === false && this.props.newProyect === false) {
+                return <Dashboard />
+            }
+            if (this.props.welcome === false && this.props.newProyect === true) {
+                return <Start />
+            }
+            if (this.props.welcome === true) {
+                return <Welcome />
+            }
+        }
 
-	handleStart() {
-		this.setState({newProyect: false});
-	}
-
-	render() {
-		return (
-			<Router>
-				<MainLayout>
-					{ this.state.welcome ? <Welcome handle={this.handleWelcome}/> : <App newProyect={this.state.newProyect} /> }
-				</MainLayout>
-			</Router>
-		);
-	}
+        return (
+            <div>
+                <MainLayout>
+                    {this.itemRender()}
+                </MainLayout>
+            </div>
+        );
+    }
 }
 
-const App = (props) => (
-	<div style={styles.app}>
-		<Route exact path="/" render={() => props.newProyect ? <Redirect to="/start" /> : <Dashboard /> } />
-		<Route exact path="/start" component={Start} />
-	</div>
-);
-
-const styles = {
-	app: {
-		height: '100%',
-	}
+const mapStateToProps = (state) => {
+    return {
+        welcome: state.router.welcome,
+        newProyect: state.router.newProyect,
+    };
 };
 
-App.propTypes = {
-	newProyect: PropTypes.bool.isRequired
-};
-
-//endregion
+export default connect(mapStateToProps)(RouterClass);

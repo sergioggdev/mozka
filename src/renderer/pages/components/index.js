@@ -3,5 +3,5 @@ import Modal from './modal/modal';
 
 export {
     Button,
-    Modal
+    Modal,
 };

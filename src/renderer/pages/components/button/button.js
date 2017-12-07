@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './button.scss';
 
@@ -21,5 +21,5 @@ Button.propTypes = {
     children: PropTypes.any.isRequired,
     size: PropTypes.string.isRequired,
     color: PropTypes.string,
-    className: PropTypes.string
-}
+    className: PropTypes.string,
+};

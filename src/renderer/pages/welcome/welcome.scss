@@ -26,7 +26,21 @@
         }
 
         .welcome__navigator__balls {
-            
+            display: flex;
+            cursor: default;
+            span {
+                min-width: 0.7em;
+                min-height: 0.7em;
+                border-radius: 50%;
+                background-color: white;
+                border: solid 1px white;
+                margin: 5px;
+
+                &.selected {
+                    background-color: #571797;
+                    border: solid 1px #6b4199;
+                }
+            }
         }
     }
 }

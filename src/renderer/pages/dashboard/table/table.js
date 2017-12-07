@@ -53,21 +53,21 @@ export default class Table extends Component {
 }
 
 const data = [
-    { url:'asdasd', method:'post', status:200, size:789, time:654 },
-    { url:'asdasd', method:'post', status:201, size:789, time:654 },
-    { url:'asdasd', method:'post', status:202, size:789, time:654 },
-    { url:'asdasd', method:'post', status:203, size:789, time:654 },
-    { url:'asdasd', method:'post', status:204, size:789, time:654 },
-    { url:'asdasd', method:'post', status:205, size:789, time:654 },
-    { url:'asdasd', method:'post', status:206, size:789, time:654 },
-    { url:'asdasd', method:'post', status:207, size:789, time:654 },
-    { url:'asdasd', method:'post', status:208, size:789, time:654 }
+    { url: 'asdasd', method: 'post', status: 200, size: 789, time: 654 },
+    { url: 'asdasd', method: 'post', status: 201, size: 789, time: 654 },
+    { url: 'asdasd', method: 'post', status: 202, size: 789, time: 654 },
+    { url: 'asdasd', method: 'post', status: 203, size: 789, time: 654 },
+    { url: 'asdasd', method: 'post', status: 204, size: 789, time: 654 },
+    { url: 'asdasd', method: 'post', status: 205, size: 789, time: 654 },
+    { url: 'asdasd', method: 'post', status: 206, size: 789, time: 654 },
+    { url: 'asdasd', method: 'post', status: 207, size: 789, time: 654 },
+    { url: 'asdasd', method: 'post', status: 208, size: 789, time: 654 },
 ];
 
 const columns = [
-    { Header:'Url', accessor:'url', Aggregated:2, Footer:'Soy un footer' },
-    { Header:'Method', accessor:'method' },
-    { Header:'Status', accessor:'status' },
-    { Header:'Size', accessor:'size' },
-    { Header:'Time', accessor:'time' }
+    { Header: 'Url', accessor: 'url', Aggregated: 2, Footer: 'Soy un footer' },
+    { Header: 'Method', accessor: 'method' },
+    { Header: 'Status', accessor: 'status' },
+    { Header: 'Size', accessor: 'size' },
+    { Header: 'Time', accessor: 'time' },
 ];

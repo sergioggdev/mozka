@@ -1,15 +1,20 @@
 .top-bar {
-    background-color: #5a4cda;
+    // background: linear-gradient(90deg,blue, #4069a7);
+    background: linear-gradient(90deg, #474753, #071a38);
+    // background-color: #5a4cda;
     padding: 0 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
 
     .top-bar__logo {
         min-width: 200px;
-        width: 30%;
-        max-width: 300px;
+        width: 70%;
+        font-size: 2em;
+        color: white;
+        // max-width: 300px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -18,9 +23,9 @@
     }
 
     .top-bar__box {
-        min-width: 300px;
-        width: 30%;
-        max-width: 400px;
+        // min-width: 300px;
+        width: 300px;
+        // max-width: 400px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;

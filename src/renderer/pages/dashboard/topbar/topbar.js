@@ -1,19 +1,44 @@
 import React, { Component } from 'react';
+import { ipcRenderer } from 'electron';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Modal } from '../../components';
 import './topbar.scss';
 
-export default class TopBar extends Component {
+export class TopBar extends Component {
+    // capture run stop
+    constructor(props) {
+        super(props);
+        this.proyectName = props.proyectName;
+        this.capture = this.capture.bind(this);
+        this.run = this.run.bind(this);
+        this.stop = this.stop.bind(this);
+        this.ipcRenderer = ipcRenderer;
+    }
+
+    capture() {
+        this.ipcRenderer.send('serverMsg', 'capture');
+    }
+
+    run() {
+        this.ipcRenderer.send('serverMsg', 'run');
+    }
+
+    stop() {
+        this.ipcRenderer.send('serverMsg', 'stop');
+    }
+
+
     render() {
         return (
             <div className="top-bar">
                 <div className="top-bar__logo">
-                    Logo
+                    {this.proyectName}
                 </div>
                 <div className="top-bar__box">
-                    <Button size="small" className="">Capture</Button>
-                    <Button size="small" className="">Run</Button>
-                    <Button size="small" className="">Stop</Button>
+                    <Button onClick={this.capture} size="small" className="">Capturar</Button>
+                    <Button onClick={this.run} size="small" className="">Iniciar</Button>
+                    <Button onClick={this.stop} size="small" className="">Parar</Button>
                 </div>
                 {/* <Modal title="Título modal">
                     <div>sdfsdfsd</div>
@@ -22,3 +47,12 @@ export default class TopBar extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        proyectName: state.proyect.name,
+    }
+}
+
+
+export default connect(mapStateToProps)(TopBar);
