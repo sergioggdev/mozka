@@ -1,3 +1,4 @@
+// Falta por revision de codigo por Sergio
 import { Menu } from 'electron';
 
 const menuEjemplo = [

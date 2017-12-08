@@ -28,7 +28,6 @@ export class TopBar extends Component {
         this.ipcRenderer.send('serverMsg', 'stop');
     }
 
-
     render() {
         return (
             <div className="top-bar">
@@ -48,11 +47,9 @@ export class TopBar extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        proyectName: state.proyect.name,
-    }
-}
+const mapStateToProps = state => ({
+    proyectName: state.proyect.name,
+});
 
 
 export default connect(mapStateToProps)(TopBar);

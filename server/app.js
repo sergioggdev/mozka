@@ -9,7 +9,7 @@ const index = require('./routes/index');
 // Comunicacion con electron
 process.on('message', (msg) => {
     console.log('padre dice: ', msg);
-    process.send('Hola papa!');
+    process.send('Mensaje recibido!');
 });
 
 // Configuracion del Servidor
@@ -80,6 +80,7 @@ socket.on('connection', (ws) => {
     };
 
 
+    // se utilizo para hacer pruebas en el desarrollo del servicewroker
     // setTimeout(() => {
     //     ws.send(JSON.stringify(startServer));
     // }, 5000);

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './header.scss';
 
 export default class Header extends Component {
+    shouldComponentUpdate() {
+        return false;
+    }
+
     render() {
         return (
             <header className="header">
