@@ -3,6 +3,11 @@ const fetch = require('node-fetch');
 
 const router = express.Router();
 
+let enviroment;
+process.on('message', (msg) => {
+    if (msg === 'capture') { enviroment = true; }
+    if (msg === 'run') { enviroment = false; }
+});
 /* GET home page. */
 router.get('/', (req, res) => {
     res.render('index', { title: 'Express' });
@@ -10,7 +15,7 @@ router.get('/', (req, res) => {
 
 router.all('/api', (req, res) => {
     // console.log('servidor', req.body);
-    if (true) {
+    if (enviroment) {
         fetch(req.body.url, req.body).then(response => response.json()).then((response) => {
             res.send(response);
             const obj = {
@@ -23,9 +28,10 @@ router.all('/api', (req, res) => {
     } else {
         // process.send(req.body);
         // process.on('message', (response) => {
-        // res.send(response);
+        //     res.send(response);
         // });
     }
 });
 
 module.exports = router;
+

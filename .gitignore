@@ -1,5 +1,6 @@
 /node_modules
 /dist
+/.vscode
 
 # Archivos ignorados
 *.lock

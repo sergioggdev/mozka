@@ -1,8 +1,9 @@
-'use strict';
 import path from 'path';
 import { app, BrowserWindow, ipcMain } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
+// import { createMenu } from './components/index';
 import { createServer, createMainWindow } from './tools';
+
 const isDevelopment = process.env.NODE_ENV !== 'production';
 let mainWindow; // Referencia global al window, necesario para evitar el recolector de basura.
 
@@ -33,28 +34,36 @@ app.on('ready', () => {
 });
 
 
+const server = createServer();
+console.log(server);
 // codigo de desarrollo servidor, necesario para la implementacion del back
-// createServer().on((msg) => {
-//     console.log(msg);
-//     switch (msg.type) {
-//     case 'post':
-//         mainWindow.send('postData', msg);
-//         break;
-//     default:
-//         console.log('hijo dice: ', msg);
-//     }
-// }).send('Hola Hijo :)');
-
+server.on((msg) => {
+    console.log('hijo dice: ', msg);
+    // switch (msg.type) {
+    // case 'post':
+    //     mainWindow.send('postData', msg);
+    //     break;
+    // default:
+    // }
+});
 
 //
-// ipcMain.on('serverMsg', (event, msg) => {
-//     event.sender.send('serverMsg', msg);
-//     if (false) {
-//         let server1 = createServer();
-//         server1.send('hola holita');
-//         server1.on(msg => {
-//             console.log('hijo dice: ', msg);
-//         })
-//     }
-// });
+ipcMain.on('serverMsg', (event, msg) => {
+    switch (msg) {
+    case 'capture':
+        server.start().send(msg);
+        event.sender.send('serverMsg', msg);
+        break;
+    case 'run':
+        server.start().send(msg);
+        event.sender.send('serverMsg', msg);
+        break;
+    case 'stop':
+        server.stop();
+        event.sender.send('serverMsg', msg);
+        break;
+    default:
+        break;
+    }
+});
 //

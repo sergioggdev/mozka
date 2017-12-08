@@ -1,3 +1,4 @@
+// Archivo aun sin implementar (No se usa)
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
