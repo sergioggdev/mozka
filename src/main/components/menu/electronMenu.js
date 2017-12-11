@@ -1,6 +1,12 @@
-import { Menu } from 'electron';
+import { app, Menu } from 'electron';
 
 const menuEjemplo = [
+    {
+        label: 'Archivo',
+        submenu: [
+            { label: 'Nuevo proyecto', click() { app.quit(); } },
+        ],
+    },
     {
         label: 'Editar',
         submenu: [
@@ -12,6 +18,13 @@ const menuEjemplo = [
             { label: 'Pegar', role: 'paste' },
             { label: 'Borrar', role: 'delete' },
             { label: 'Seleccionar todo', role: 'selectall' },
+            { type: 'separator' },
+            {
+                label: 'Salir',
+                click() {
+                    app.quit();
+                },
+            },
         ],
     },
     {
@@ -30,6 +43,6 @@ const menuEjemplo = [
     },
 ]
 
-const menu = Menu.setApplicationMenu(Menu.buildFromTemplate(menuEjemplo));
+const createMenu = Menu.setApplicationMenu(Menu.buildFromTemplate(menuEjemplo));
 
-// export default menu;
+export default createMenu;

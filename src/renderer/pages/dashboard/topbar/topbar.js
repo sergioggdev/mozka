@@ -36,9 +36,9 @@ export class TopBar extends Component {
                     {this.proyectName}
                 </div>
                 <div className="top-bar__box">
-                    <Button onClick={this.capture} size="small" className="">Capturar</Button>
-                    <Button onClick={this.run} size="small" className="">Iniciar</Button>
-                    <Button onClick={this.stop} size="small" className="">Parar</Button>
+                    <Button onClick={this.capture} size="small" color="top-bar">Capturar</Button>
+                    <Button onClick={this.run} size="small" color="top-bar">Iniciar</Button>
+                    <Button onClick={this.stop} size="small" color="top-bar">Parar</Button>
                 </div>
                 {/* <Modal title="Título modal">
                     <div>sdfsdfsd</div>
