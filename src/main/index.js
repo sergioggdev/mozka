@@ -1,11 +1,12 @@
 import path from 'path';
 import { app, BrowserWindow, ipcMain } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
-// import { createMenu } from './components/index';
+import { createMainMenu } from './components/index';
 import { createServer, createMainWindow } from './tools';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 let mainWindow; // Referencia global al window, necesario para evitar el recolector de basura.
+let mainMenu;
 
 console.log(process.env.NODE_ENV);
 console.log('url Desarrollo', `http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
@@ -30,6 +31,7 @@ app.on('ready', () => {
     installExtension(REDUX_DEVTOOLS)
         .then(name => console.log(`Added Extension:  ${name}`))
         .catch(err => console.log('An error occurred: ', err));
+    mainMenu = createMainMenu();
     mainWindow = createMainWindow();
 });
 

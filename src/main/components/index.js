@@ -1,5 +1,5 @@
-import createMenu from './menu/electronMenu';
+import createMainMenu from './menu/createmainmenu';
 
-export default {
-    createMenu,
+export {
+    createMainMenu,
 };
