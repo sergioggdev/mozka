@@ -1,4 +1,6 @@
 import { app, Menu } from 'electron';
+import { connect } from 'react-redux';
+import Redux, { popup, proyectName, newProyect, all } from '../../../renderer/models';
 
 const menuEjemplo = [
     {
@@ -45,4 +47,12 @@ const menuEjemplo = [
 
 const createMenu = Menu.setApplicationMenu(Menu.buildFromTemplate(menuEjemplo));
 
-export default createMenu;
+// const mapStateToProps = (state) => {
+//     return {
+//         popup: state.router.popup,
+//         proyectName: state.proyect.name,
+//         newProyect: state.router.newProyect,
+//     }
+// }
+
+export default connect(createMenu);
