@@ -43,27 +43,9 @@ export class Start extends Component {
         this.Redux.dispatch(all(this.routerAll));
     }
 
-    // componentWillMount() {
-    // console.log('se va a montar el componente')
-    // }
-    // componentDidMount() {
-    // console.log('el componente ya se monto')
-    // }
-
-    // componentWillUpdate(nextProps, nextState) {
-    // console.log('se actualiza', nextState)
-    // }
-
-    // componentWillUnmount() {
-    // console.log('el componente se va adesmontar')
-    // }
-
-    // componentDidCatch(error, info) {
-    // console.log('salio un error', error)
-    // }
-
     render() {
-        // deberia quedar como el formulario del login de: https://themeforest.net/item/crudkit-publishingnewsblog-interface-/15772849?s_rank=2
+        // Juan deberia quedar como el formulario del login de: https://themeforest.net/item/crudkit-publishingnewsblog-interface-/15772849?s_rank=2
+        // Si no, me preguntas.
         return (
             <section className="start">
                 <div className="start__new">

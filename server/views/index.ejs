@@ -8,23 +8,75 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <script type="application/javascript">
-    const url = 'http://localhost:3000/serviceworker.js';
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register(url).then(function(registration) {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }).catch(function(err) {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
+
+    // Create Notification permission
+    if ('Notification' in window) {
+      Notification.requestPermission();
     }
+
+    // Create ServiceWorker
+    if ('serviceWorker' in navigator) {
+      const env = localStorage.getItem('mozkaUrlServer') || 'http://localhost:3000';
+      initServiceWorker(env);
+
+      navigator.serviceWorker.ready.then(serviceWorker => {
+        navigator.serviceWorker.controller.postMessage(env);
+      });
+
+      navigator.serviceWorker.onmessage = msg => {
+        if ('Notification' in window) {
+          let hola = new window.Notification('MozKa', {
+            body: msg.data.text,
+            tag: 'MozKa',
+            renotify: true,
+            icon: msg.data.img,
+            image: msg.data.img,
+            data: msg.data.data,
+          });
+        }
+      }
+
+      function initServiceWorker(url) {
+        navigator.serviceWorker.register(url + 'serviceworker.js').then(registration => {
+          console.log('ServiceWorker registration successful with scope:', registration.scope);
+        }).catch(err => {
+          console.log('ServiceWorker registration failed:', err);
+          const youWantChange = confirm("¿La url de Mozka es erronea, quieres cambiarla?");
+          if (youWantChange) {
+            const envChange = prompt("Introduce la url donde esta corriendo Mozka", "http://localhost:3000/");
+            localStorage.setItem('mozkaUrlServer', envChange);
+            initServiceWorker(envChange);
+          }
+        });
+      }
+      
+    }
+
+    
+    
+    
+
+    // Example Fetch
     window.addEventListener('load', function() {
       fetch('https://swapi.co/api/people/')
         .then((res) => res.json())
         .then((res) => { console.log(res); })
 
+
+      fetch('https://swapi.co/api/planets/3/', {
+          method: 'POST',
+          mode: 'cors',
+          headers: new Headers({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify({
+              hola: 'asda',
+          }),
+      })
+        .then(res => res.json())
+        .then((res) => { console.log(res); })
+        
     });
+
+
     </script>
-    
   </body>
 </html>

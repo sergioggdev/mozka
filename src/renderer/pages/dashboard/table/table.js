@@ -5,6 +5,11 @@ import 'react-table/react-table.css';
 import './table.scss';
 
 export default class Table extends Component {
+    shouldComponentUpdate() {
+        // Por ahora lo dejamos asi para evitar que se renderice por algun error
+        return false;
+    }
+
     render() {
         return (
             <div className="table">

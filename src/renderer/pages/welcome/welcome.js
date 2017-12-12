@@ -84,7 +84,7 @@ export default class Welcome extends Component {
     }
 
     render() {
-        let siguiente = slides.length - 1 === this.state.activeSlide ? 'Terminar' : 'Siguiente';
+        const siguiente = slides.length - 1 === this.state.activeSlide ? 'Terminar' : 'Siguiente';
         return (
             <div className="welcome">
                 <Slider

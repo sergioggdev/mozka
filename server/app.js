@@ -9,7 +9,7 @@ const index = require('./routes/index');
 // Comunicacion con electron
 process.on('message', (msg) => {
     console.log('padre dice: ', msg);
-    process.send('Hola papa!');
+    process.send('Mensaje recibido!');
 });
 
 // Configuracion del Servidor
@@ -62,8 +62,30 @@ const socket = new WebSocket.Server({ server });
 socket.on('connection', (ws) => {
     console.log('a user connected');
     ws.on('message', (msg) => {
-        console.log(msg);
+        console.log('Mensaje desde ServiceWorker:', msg);
     });
-    ws.send('Hola, te envio un mensaje por websokets');
-});
 
+    const stopServer = {
+        type: 'stopServer',
+        text: 'El servidor de Mozka esta parado',
+        img: 'https://icon-icons.com/icons2/860/PNG/512/embarrass_icon-icons.com_67803.png',
+        data: null,
+    };
+
+    const startServer = {
+        type: 'startServer',
+        text: 'Mozca esta levantado, disfrutalo!!',
+        img: 'https://icon-icons.com/icons2/860/PNG/512/wink_icon-icons.com_67813.png',
+        data: null,
+    };
+
+
+    // se utilizo para hacer pruebas en el desarrollo del servicewroker
+    // setTimeout(() => {
+    //     ws.send(JSON.stringify(startServer));
+    // }, 5000);
+
+    // setTimeout(() => {
+    //     ws.send(JSON.stringify(stopServer));
+    // }, 10000);
+});

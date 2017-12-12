@@ -1,5 +1,5 @@
-import { menuEjemplo } from './menu/electronMenu';
+import createMenu from './menu/electronMenu';
 
 export default {
-    menuEjemplo,
+    createMenu,
 };

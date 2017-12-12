@@ -1,6 +1,5 @@
-import { app, Menu } from 'electron';
-import { connect } from 'react-redux';
-import Redux, { popup, proyectName, newProyect, all } from '../../../renderer/models';
+// Falta por revision de codigo por Sergio
+import { Menu } from 'electron';
 
 const menuEjemplo = [
     {

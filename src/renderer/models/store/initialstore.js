@@ -1,6 +1,6 @@
 export default {
     router: {
-        welcome: false,
+        welcome: true,
         newProyect: true,
         popup: false,
     },
