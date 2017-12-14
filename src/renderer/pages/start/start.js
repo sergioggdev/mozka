@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Electron from 'electron';
 import { connect } from 'react-redux';
-import Redux, { popup, proyectName, newProyect, all } from '../../models';
+import Redux, { popup, proyectName, all } from '../../models';
 import { Button, Modal } from '../components';
 import './start.scss';
 
