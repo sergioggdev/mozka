@@ -130,14 +130,18 @@
             border-color: #414141;
         }
     }
-    .red {
-        background-color: red;
-        color: black;
+    .top-bar {
+        text-shadow: 1px 1px 1px #000;
+        background: linear-gradient(-90deg, #4069a7, #82bf83);
+        color: white;
         &:before, &:after {
-            border-color: black;
+            border-color: #414141;
         }
         span:before, span:after {
-            border-color: black;
+            border-color: #414141;
+        }
+        &:focus {
+            background: linear-gradient(-90deg, rgb(96, 156, 247), rgb(172, 252, 172));
         }
     }
     .green {
