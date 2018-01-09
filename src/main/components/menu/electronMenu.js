@@ -3,6 +3,12 @@ import { Menu } from 'electron';
 
 const menuEjemplo = [
     {
+        label: 'Archivo',
+        submenu: [
+            { label: 'Nuevo proyecto', click() { app.quit(); } },
+        ],
+    },
+    {
         label: 'Editar',
         submenu: [
             { label: 'Deshacer', role: 'undo' },
@@ -13,6 +19,13 @@ const menuEjemplo = [
             { label: 'Pegar', role: 'paste' },
             { label: 'Borrar', role: 'delete' },
             { label: 'Seleccionar todo', role: 'selectall' },
+            { type: 'separator' },
+            {
+                label: 'Salir',
+                click() {
+                    app.quit();
+                },
+            },
         ],
     },
     {
@@ -31,6 +44,14 @@ const menuEjemplo = [
     },
 ]
 
-const menu = Menu.setApplicationMenu(Menu.buildFromTemplate(menuEjemplo));
+const createMenu = Menu.setApplicationMenu(Menu.buildFromTemplate(menuEjemplo));
 
-// export default menu;
+// const mapStateToProps = (state) => {
+//     return {
+//         popup: state.router.popup,
+//         proyectName: state.proyect.name,
+//         newProyect: state.router.newProyect,
+//     }
+// }
+
+export default connect(createMenu);
